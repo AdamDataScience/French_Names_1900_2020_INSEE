@@ -62,5 +62,5 @@ def plot_name(name, handle_sex='SEPARATE'):
     fig = plt.gcf()
     st.pyplot(fig)
     
-name_selected = st.selectbox('Choose a name:', unique_names, first_name_index)
+name_selected = st.selectbox('Choose a name :', unique_names, first_name_index)
 plot_name(name_selected, 'SEPARATE')
