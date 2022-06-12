@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 
 query_params = st.experimental_get_query_params()
-st.write(query_params['name'])
+st.write(query_params['name'][0])
 
 first_name = 'CAMILLE'
 if 'name' in query_params :
