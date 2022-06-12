@@ -4,11 +4,12 @@ import pandas as pd
 import streamlit as st
 
 @st.cache()
-def load_data(remove_rare=True, first_name='CAMILLE'):
+def load_data(first_name='CAMILLE', remove_rare=True, remove_X=True):
     file = r"./Data/french_names_1900-2020.csv"
     df = pd.read_csv(file,delimiter=';')
     df.columns = ['sex','name','year','count']
     if remove_rare: df = df[df.name != '_PRENOMS_RARES']
+    if remove_X: df = df[df.year != "XXXX"]
     unique_names = df.name.unique()
     first_name_index = int(np.where(unique_names == first_name)[0][0])
     return df, unique_names, first_name_index
