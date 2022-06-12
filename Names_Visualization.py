@@ -66,3 +66,5 @@ def plot_name(name, handle_sex='SEPARATE'):
     
 name_selected = st.selectbox('Choose a name :', unique_names, first_name_index)
 plot_name(name_selected, 'SEPARATE')
+
+st.write('Fichier des prénoms, INSEE, 2021\nhttps://www.insee.fr/fr/statistiques/2540004?sommaire=4767262#documentation')
