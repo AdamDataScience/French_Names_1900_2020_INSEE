@@ -60,8 +60,7 @@ def plot_name(name, handle_sex='SEPARATE'):
         plt.title(f"{name} ({title})")
         plt.legend()
         
-    from matplotlib.ticker import StrMethodFormatter
-    plt.gca().xaxis.set_major_formatter(StrMethodFormatter('{x:.0f}')) # No decimal places
+    plt.xticks(np.floor(plt.xticks()[0])) # round xticks
     fig = plt.gcf()
     st.pyplot(fig)
     
