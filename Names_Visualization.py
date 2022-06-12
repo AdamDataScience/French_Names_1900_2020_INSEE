@@ -82,6 +82,6 @@ name_selected = st.selectbox('Type a name :', unique_names, first_name_index)
 st.experimental_set_query_params(name=name_selected.lower())
 plot_name(name_selected, 'SEPARATE')
 
-st.markdown('INSEE 2021, _Fichier des prénoms_ <br>\
+st.markdown('INSEE 2021, _Fichier des prénoms_  \n\
             <https://www.insee.fr/fr/statistiques/2540004#documentation>')
 st.caption('<https://www.insee.fr/fr/statistiques/2540004#documentation>')
