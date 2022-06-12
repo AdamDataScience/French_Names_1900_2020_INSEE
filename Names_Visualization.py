@@ -1,15 +1,18 @@
+%%writefile app.py
+
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
 
 @st.cache()
-def load_data(remove_rare=True):
+def load_data(remove_rare=True, first_name='CAMILLE'):
     file = r"./Data/french_names_1900-2020.csv"
     df = pd.read_csv(file,delimiter=';')
     df.columns = ['sex','name','year','count']
     if remove_rare: df = df[df.name != '_PRENOMS_RARES']
     unique_names = df.name.unique()
-    return df, unique_names
+    first_name_index = unique_names[unique_names == first_name].index[0]
+    return df, unique_names, first_name_index
 
 name_data, unique_names = load_data()
 
@@ -60,5 +63,5 @@ def plot_name(name, handle_sex='SEPARATE'):
     fig = plt.gcf()
     st.pyplot(fig)
     
-name_selected = st.selectbox('Choose a name...', unique_names)
+name_selected = st.selectbox('Choose a name...', unique_names, first_name_index)
 plot_name(name_selected, 'SEPARATE')
