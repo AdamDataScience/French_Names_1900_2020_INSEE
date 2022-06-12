@@ -10,7 +10,7 @@ def load_data(remove_rare=True, first_name='CAMILLE'):
     df.columns = ['sex','name','year','count']
     if remove_rare: df = df[df.name != '_PRENOMS_RARES']
     unique_names = df.name.unique()
-    first_name_index = np.where(unique_names == first_name)[0][0]
+    first_name_index = int(np.where(unique_names == first_name)[0][0])
     return df, unique_names, first_name_index
 
 name_data, unique_names, first_name_index = load_data()
