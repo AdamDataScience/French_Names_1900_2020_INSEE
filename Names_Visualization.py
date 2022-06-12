@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
 
+import matplotlib as mpl
+mpl.rcParams['figure.figsize'] = [6.4, 4]
+
 query_params = st.experimental_get_query_params()
 
 first_name = 'CAMILLE'
