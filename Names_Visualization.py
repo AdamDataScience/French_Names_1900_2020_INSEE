@@ -82,11 +82,6 @@ st.markdown(
                 .reportview-container .css-1lcbmhc .css-1outpf7 {{
                     padding-top: 35px;
                 }}
-                :
-                :
-               etc.
-                :
-                :
             </style>
             ''')
     
