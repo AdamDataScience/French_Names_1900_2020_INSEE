@@ -15,8 +15,6 @@ def load_data(remove_rare=True, first_name='CAMILLE'):
 
 name_data, unique_names, first_name_index = load_data()
 
-name_data, unique_names = load_data()
-
 def get_name_data(name, df=name_data, include_X=False):
     name_df = df[df.name == name]
     if not include_X:
