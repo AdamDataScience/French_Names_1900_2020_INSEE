@@ -3,14 +3,23 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
 
+query_params = st.experimental_get_query_params()
+
+if 'name' in query_params :
+    if isinstance(query_params['name'], list): first_name = query_params['name'][0]
+    else: first_name = query_params['name']
+else: first_name = 'CAMILLE'
+first_name = first_name.upper()
+
 @st.cache()
-def load_data(first_name='CAMILLE', remove_rare=True, remove_X=True):
+def load_data(default_name='CAMILLE', remove_rare=True, remove_X=True):
     file = r"./Data/french_names_1900-2020.csv"
     df = pd.read_csv(file,delimiter=';')
     df.columns = ['sex','name','year','count']
     if remove_rare: df = df[df.name != '_PRENOMS_RARES']
     if remove_X: df = df[df.year != "XXXX"]
     unique_names = df.name.unique()
+    if first_name not in unique_names: first_name = default_name
     first_name_index = int(np.where(unique_names == first_name)[0][0])
     return df, unique_names, first_name_index
 
