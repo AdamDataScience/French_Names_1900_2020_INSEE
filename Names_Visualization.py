@@ -76,6 +76,20 @@ def plot_name(name, handle_sex='SEPARATE'):
     fig = plt.gcf()
     st.pyplot(fig)
     
+st.markdown(
+            f'''
+            <style>
+                .reportview-container .css-1lcbmhc .css-1outpf7 {{
+                    padding-top: 35px;
+                }}
+                :
+                :
+               etc.
+                :
+                :
+            </style>
+            ''')
+    
 st.header('French names by year')
 name_selected = st.selectbox('Type a name :', unique_names, first_name_index)
 st.experimental_set_query_params(name=name_selected.lower())
