@@ -77,7 +77,8 @@ def plot_name(name, handle_sex='SEPARATE'):
     st.pyplot(fig)
     
 st.header('French names by year')
-name_selected = st.selectbox('Type a name :', unique_names, first_name_index)
+with st.sidebar:
+    name_selected = st.selectbox('Type a name :', unique_names, first_name_index)
 st.experimental_set_query_params(name=name_selected.lower())
 plot_name(name_selected, 'SEPARATE')
 
