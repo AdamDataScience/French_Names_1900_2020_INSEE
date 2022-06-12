@@ -84,4 +84,3 @@ plot_name(name_selected, 'SEPARATE')
 
 st.markdown('INSEE 2021, _Fichier des prénoms_  \n\
             <https://www.insee.fr/fr/statistiques/2540004#documentation>')
-st.caption('<https://www.insee.fr/fr/statistiques/2540004#documentation>')
