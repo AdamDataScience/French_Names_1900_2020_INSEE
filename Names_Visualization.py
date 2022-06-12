@@ -1,16 +1,19 @@
+import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
 
 @st.cache()
 def load_data(remove_rare=True, first_name='CAMILLE'):
-    file = r"./Data/french_names_1900-2020.csv"
+    file = r"../input/french-names-1900-2020-insee/french_names_1900-2020.csv"
     df = pd.read_csv(file,delimiter=';')
     df.columns = ['sex','name','year','count']
     if remove_rare: df = df[df.name != '_PRENOMS_RARES']
     unique_names = df.name.unique()
-    first_name_index = unique_names[unique_names == first_name].index
+    first_name_index = np.where(unique_names == first_name)[0][0]
     return df, unique_names, first_name_index
+
+name_data, unique_names, first_name_index = load_data()
 
 name_data, unique_names = load_data()
 
