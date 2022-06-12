@@ -10,7 +10,7 @@ first_name = 'CAMILLE'
 if 'name' in query_params :
     if isinstance(query_params['name'], list): first_name = query_params['name'][0]
     else: first_name = query_params['name']
-   st.write(first_name)
+st.write(first_name)
 first_name = first_name.upper()
 
 @st.cache()
