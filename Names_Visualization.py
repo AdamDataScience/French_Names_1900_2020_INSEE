@@ -76,7 +76,7 @@ def plot_name(name, handle_sex='SEPARATE'):
     fig = plt.gcf()
     st.pyplot(fig)
     
-st.header('French Names by year')
+st.header('French names by year')
     
 name_selected = st.selectbox('Type a name :', unique_names, first_name_index)
 plot_name(name_selected, 'SEPARATE')
