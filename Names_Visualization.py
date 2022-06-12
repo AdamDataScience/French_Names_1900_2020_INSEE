@@ -4,7 +4,7 @@ import streamlit as st
 
 @st.cache()
 def load_data(remove_rare=True):
-    file = r"../input/french-names-1900-2020-insee/french_names_1900-2020.csv"
+    file = r"./Data/french_names_1900-2020.csv"
     df = pd.read_csv(file,delimiter=';')
     df.columns = ['sex','name','year','count']
     if remove_rare: df = df[df.name != '_PRENOMS_RARES']
