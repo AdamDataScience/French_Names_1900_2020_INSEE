@@ -8,9 +8,10 @@ def load_data(remove_rare=True):
     df = pd.read_csv(file,delimiter=';')
     df.columns = ['sex','name','year','count']
     if remove_rare: df = df[df.name != '_PRENOMS_RARES']
-    return df
+    unique_names = df.name.unique()
+    return df, unique_names
 
-name_data = load_data()
+name_data, unique_names = load_data()
 
 def get_name_data(name, df=name_data, include_X=False):
     name_df = df[df.name == name]
@@ -59,5 +60,5 @@ def plot_name(name, handle_sex='SEPARATE'):
     fig = plt.gcf()
     st.pyplot(fig)
     
-name_selected = st.selectbox('Choose a name...', name_data.name)
+name_selected = st.selectbox('Choose a name...', unique_names)
 plot_name(name_selected, 'SEPARATE')
