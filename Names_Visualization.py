@@ -12,7 +12,7 @@ if 'name' in query_params :
 first_name = first_name.upper()
 
 #@st.cache()
-def load_data(default_name='CAMILLE', remove_rare=True, remove_X=True):
+def load_data(default_name='CAMILLE', first_name=first_name, remove_rare=True, remove_X=True):
     file = r"./Data/french_names_1900-2020.csv"
     df = pd.read_csv(file,delimiter=';')
     df.columns = ['sex','name','year','count']
