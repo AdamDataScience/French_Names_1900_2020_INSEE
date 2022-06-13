@@ -16,7 +16,7 @@ for i, name in enumerate(first_names):
     first_names[i] = first_names[i].upper()
 
 @st.cache()
-def load_data(default_names=['CAMILLE','DOMINIQUE'], first_name=first_name, remove_rare=True, remove_X=True):
+def load_data(default_names=['CAMILLE','DOMINIQUE'], first_names=first_names, remove_rare=True, remove_X=True):
     file = r"./Data/french_names_1900-2020.csv"
     df = pd.read_csv(file,delimiter=';')
     df.columns = ['sex','name','year','count']
