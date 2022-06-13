@@ -93,7 +93,7 @@ def plot_name(names, handle_sex='SEPARATE'):
     
 st.header('French names by year')
 separate = st.checkbox('Separate by sex', True)
-names_selected = st.multiselect('Type a name :', unique_names, valid_names)
+names_selected = st.multiselect('Type names :', unique_names, valid_names)
 st.experimental_set_query_params(name=names_selected)
 handle_sex = 'SEPARATE' if separate else 'SUM'
 plot_name(names_selected, handle_sex)
