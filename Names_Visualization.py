@@ -8,7 +8,7 @@ mpl.rcParams['figure.figsize'] = [6.4, 4]
 
 query_params = st.experimental_get_query_params()
 
-first_name = 'CAMILLE'
+first_names = ['CAMILLE','DOMINIQUE']
 if 'name' in query_params :
     if isinstance(query_params['name'], list): first_name = query_params['name'][0]
     else: first_name = query_params['name']
