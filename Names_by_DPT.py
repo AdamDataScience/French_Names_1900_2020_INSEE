@@ -109,7 +109,7 @@ with cols[0]:
 
 @st.cache()
 def load_map_data():
-    geojson_file = r"./Data/france_departments_corse_merged.geojson"
+    geojson_file = r"./Data/france_departments_corse_merged.json"
     with open(geojson_file) as f:
         geojson = json.load(f)
     return geojson
