@@ -74,7 +74,7 @@ def plot_name(names, handle_sex='SEPARATE'):
             i+=1
             
     if handle_sex=='SUM': plt.title('French names (males + females)')
-    elif handle_sex=='SEPARATE': plt.title(('French names (males vs females)')
+    elif handle_sex=='SEPARATE': plt.title('French names (males vs females)')
     else: plt.title(f"French names ({title})")
     plt.legend()
         
