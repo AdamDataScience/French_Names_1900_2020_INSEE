@@ -46,15 +46,16 @@ def plot_name(names, handle_sex='SEPARATE'):
     cmap = plt.cm.get_cmap('hsv', n_colors)
     i=0
     for name in names:
-        st.write(i)
         data=get_name_data(name)
         if handle_sex == 'SUM':
+            st.write(i)
             data=data.groupby(by=['year']).sum().reset_index()
             plt.plot('year','count', data=data, c=cmap(i))
             i+=1
 
         elif handle_sex == 'SEPARATE':
             for sex in data.sex.unique():
+                st.write(i)
                 if sex == 1:
                     label=name + ' males'
                     c=cmap(i)
@@ -66,6 +67,7 @@ def plot_name(names, handle_sex='SEPARATE'):
             i+=2
 
         elif handle_sex in ['MALE','MALES','FEMALE','FEMALES']:
+            st.write(i)
             if handle_sex in ['MALE','MALES']:
                 sex=1
                 label=name + ' males'
