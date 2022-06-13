@@ -94,6 +94,8 @@ def plot_name(names, handle_sex='SEPARATE'):
     
 st.header('French names by year')
 names_selected = st.multiselect('Type a name :', unique_names, valid_names)
+for i, name in enumerate(names_selected):
+    names_selected[i] = names_selected[i].lower()
 st.experimental_set_query_params(name=names_selected)
 plot_name(names_selected, 'SEPARATE')
 
