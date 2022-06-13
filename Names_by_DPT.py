@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 import json
 from geopy.geocoders import Nominatim
-# import geopandas as gpd
+# import geopandas as gpd...
 import folium
 
 import matplotlib as mpl
