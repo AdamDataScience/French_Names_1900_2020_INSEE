@@ -42,7 +42,7 @@ def get_name_data(name, df=name_data, include_X=False):
     
 def plot_name(names, handle_sex='SEPARATE'):
     n_colors = (2*len(names) +1) if handle_sex=='SEPARATE' else (len(names) +1)
-    cmap = plt.cm.get_cmap('pastel1', n_colors)
+    cmap = plt.cm.get_cmap('Pastel1', n_colors)
     # for i in range(n_colors): st.write(cmap(i))
     i=0
     for name in names:
