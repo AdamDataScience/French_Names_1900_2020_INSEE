@@ -89,7 +89,7 @@ st.markdown('INSEE 2021, _Fichier des prénoms_  \n\
 
 st.markdown('#')
 st.header('Name Generation (coming soon)')
-cols = st.columns(4)
+cols = st.columns(5)
 with cols[0]:
     st.selectbox('Gender :', ['Male','Female','Neither'],0)
 with cols[1]:
@@ -97,6 +97,8 @@ with cols[1]:
 with cols[2]:
     st.selectbox('Department :', ['...'],0)
 with cols[3]:
-    st.markdown('###')
-    st.markdown(' ')
+    st.checkbox('Only show original names')
+with cols[4]:
+    st.markdown('#')
+#     st.markdown(' ')
     st.button('Generate Names', disabled=True)
