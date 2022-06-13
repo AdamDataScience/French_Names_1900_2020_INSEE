@@ -87,6 +87,7 @@ plot_name(name_selected, handle_sex)
 st.markdown('INSEE 2021, _Fichier des prénoms_  \n\
             <https://www.insee.fr/fr/statistiques/2540004#documentation>')
 
+st.markdown('#')
 st.header('Name Generation (coming soon)')
 cols = st.columns(3)
 with cols[0]:
@@ -94,4 +95,5 @@ with cols[0]:
 with cols[1]:
     st.selectbox('Period :', [str(x)+'s' for x in range(1900,2011,10)],11)
 with cols[2]:
+    st.markdown('##')
     st.button('Generate Names', disabled=True)
