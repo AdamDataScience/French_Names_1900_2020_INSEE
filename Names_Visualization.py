@@ -88,7 +88,7 @@ st.markdown('INSEE 2021, _Fichier des prénoms_  \n\
             <https://www.insee.fr/fr/statistiques/2540004#documentation>')
 
 st.header('Name Generation (coming soon)')
-cols = st.columns(1,1,1)
+cols = st.columns(3)
 with cols[0]:
     st.selectbox('Gender :', ['Male','Female','Neither'],0)
 with cols[1]:
