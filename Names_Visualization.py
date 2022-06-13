@@ -92,6 +92,6 @@ cols = st.columns(3)
 with cols[0]:
     st.selectbox('Gender :', ['Male','Female','Neither'],0)
 with cols[1]:
-    st.selectbox('Period :', [str(x)+'s' for x in range(1900,2011,10)],10)
+    st.selectbox('Period :', [str(x)+'s' for x in range(1900,2011,10)],11)
 with cols[2]:
     st.button('Generate Names', disabled=True)
