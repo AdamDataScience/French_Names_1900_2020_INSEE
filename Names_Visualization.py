@@ -45,6 +45,7 @@ def plot_name(names, handle_sex='SEPARATE'):
     else: n_colors = len(names) +1
     st.write(n_colors)
     cmap = plt.cm.get_cmap('hsv', n_colors)
+    for i in range(n_colors): st.write(cmap(i)
     i=0
     for name in names:
         data=get_name_data(name)
