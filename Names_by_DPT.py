@@ -50,17 +50,15 @@ def get_name_data(name, df=name_data, include_X=False):
 #         name_df = name_df[name_df.year != 'XXXX']
 #         name_df = name_df.astype({'year':'int32'})
 #     name_df = name_df.sort_values(by='year')
+    # fill missing years with 0:
+    new_index = pd.MultiIndex.from_product([range(1900,2021,1),name_df.dpt.unique(),name_df.sex.unique()], names=['year','dpt','sex'])
     name_df = name_df.set_index(['year','dpt','sex'])
-    new_index = pd.MultiIndex.from_product(name_df.index.levels, names=name_df.index.names)
     name_df = name_df.reindex(new_index, fill_value=0).reset_index()
     st.write(name_df.astype(str))
     return name_df
     
 def plot_name(name, data, handle_sex='SEPARATE'):
 #     data=get_name_data(name)
-    # fill missing years with 0:
-#     new_index = pd.Index(np.arange(1900,2021,1), name='year',dtype=int)
-#     name_df = name_df.reset_index().set_index(['year']).reindex(new_index,fill_value=0).reset_index()
     if handle_sex == 'SUM':
         data=data.groupby(by=['year']).sum().reset_index()
         c='tab:blue'
