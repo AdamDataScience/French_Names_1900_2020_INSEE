@@ -85,7 +85,7 @@ def plot_name(names, handle_sex='SEPARATE'):
     if handle_sex=='SUM': plt.title('French names (males + females)')
     elif handle_sex=='SEPARATE': plt.title('French names (males vs females)')
     else: plt.title(f"French names ({title})")
-    plt.legend()
+    plt.legend(loc=(1,1))
         
     plt.xticks(np.floor(plt.xticks()[0])) # round xticks
     fig = plt.gcf()
