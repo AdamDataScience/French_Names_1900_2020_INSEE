@@ -77,7 +77,7 @@ def plot_name(name, handle_sex='SEPARATE'):
     fig = plt.gcf()
     st.pyplot(fig)
     
-st.header('French names by year')
+st.header('French Names by Year')
 separate = st.checkbox('Separate by sex', True)
 name_selected = st.selectbox('Type a name :', unique_names, first_name_index)
 st.experimental_set_query_params(name=name_selected.lower())
@@ -97,5 +97,6 @@ with cols[1]:
 with cols[2]:
     st.selectbox('Department :', ['...'],0)
 with cols[3]:
-    st.markdown('#')
+    st.markdown('###')
+    st.markdown('###')
     st.button('Generate Names', disabled=True)
