@@ -40,7 +40,8 @@ def plot_name(name, handle_sex='SEPARATE'):
     data=get_name_data(name)
     if handle_sex == 'SUM':
         data=data.groupby(by=['year']).sum().reset_index()
-        plt.plot('year','count', data=data)
+        c='tab:blue'
+        plt.plot('year','count', data=data, c=c)
         plt.title(name + ' (males + females)')
         
     elif handle_sex == 'SEPARATE':
