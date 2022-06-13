@@ -62,7 +62,7 @@ def plot_name(names, handle_sex='SEPARATE'):
                     c=cmap(i)
                 elif sex == 2:
                     label=name + ' females'
-                    c=c=cmap(i+1)
+                    c=c=cmap(i)
                 data_temp = data[data.sex==sex]
                 plt.plot('year','count',data=data_temp, label=label,c=c)
                 i+=1
