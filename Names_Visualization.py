@@ -41,8 +41,8 @@ def get_name_data(name, df=name_data, include_X=False):
     return name_df
     
 def plot_name(names, handle_sex='SEPARATE'):
-    if handle_sex=='SEPARATE': n_colors = 2*len(names)
-    else: n_colors = len(names)
+    if handle_sex=='SEPARATE': n_colors = 2*len(names) +1
+    else: n_colors = len(names) +1
     st.write(n_colors)
     cmap = plt.cm.get_cmap('hsv', n_colors)
     i=0
