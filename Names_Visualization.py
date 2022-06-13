@@ -90,7 +90,7 @@ def plot_name(names, handle_sex='SEPARATE'):
     st.pyplot(fig)
     
 st.header('French names by year')
-names_selected = st.multiselect('Type a name :', unique_names, first_name)
+names_selected = st.multiselect('Type a name :', unique_names, valid_names)
 st.experimental_set_query_params(name=names_selected)
 plot_name(names_selected, 'SEPARATE')
 
