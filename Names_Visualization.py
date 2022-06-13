@@ -65,7 +65,7 @@ def plot_name(names, handle_sex='SEPARATE'):
                     c=cmap(i)
                     linestyle='dotted'
                 data_temp = data[data.sex==sex]
-                plt.plot('year','count',data=data_temp, label=label,c=c)
+                plt.plot('year','count',data=data_temp, label=label, c=c, linestyle=linestyle)
             i+=1
 
         elif handle_sex in ['MALE','MALES','FEMALE','FEMALES']:
