@@ -6,6 +6,7 @@ import json
 from geopy.geocoders import Nominatim
 # import geopandas as gpd...
 import folium
+import zipfile
 
 import matplotlib as mpl
 mpl.rcParams['figure.figsize'] = [6.4, 4]
@@ -92,7 +93,6 @@ data=get_name_data(name_selected)
 plot_name(name_selected, data, handle_sex)
 
 # MAP
-# UPDATE REQUIREMENTS.TXT !!!!!!!!!!!!!!!!!!!!!!!
 
 geojson_file = r"./Data/france_departments_corse_merged.geojson"
 with open(geojson_file) as f:
