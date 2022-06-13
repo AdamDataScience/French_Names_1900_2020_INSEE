@@ -23,8 +23,13 @@ first_name = first_name.upper()
 
 @st.cache()
 def load_data(default_name='CAMILLE', first_name=first_name, remove_rare=True, remove_X=True):
-    file = r"./Data/french_names_1900-2020.csv"
-    df = pd.read_csv(file,delimiter=';')
+#     file = r"./Data/french_names_1900-2020.csv"
+    file = r"dpt2020.csv"
+    file_zip = r"r"./Data/dpt2020_csv.zip"
+    zf = zipfile.ZipFile(file_zip)
+#     with open(file) as f:
+    df = pd.read_csv(zf.open(file),delimiter=';')
+#     df = pd.read_csv(file,delimiter=';')
     df.columns = ['sex','name','year','count']
     if remove_rare: df = df[df.name != '_PRENOMS_RARES']
     if remove_X: df = df[df.year != "XXXX"]
