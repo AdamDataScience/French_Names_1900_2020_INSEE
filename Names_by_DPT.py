@@ -89,6 +89,7 @@ def plot_name(name, data, handle_sex='SEPARATE'):
         plt.legend()
         
     plt.xticks(np.floor(plt.xticks()[0])) # round xticks
+    plt.yticks(np.floor(plt.yticks()[0]))
     fig = plt.gcf()
     st.pyplot(fig)
     
