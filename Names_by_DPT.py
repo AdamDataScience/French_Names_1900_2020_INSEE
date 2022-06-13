@@ -60,6 +60,7 @@ def plot_name(name, data, handle_sex='SEPARATE'):
         plt.title(name + ' (males + females)')
         
     elif handle_sex == 'SEPARATE':
+        data=data.groupby(by=['year','sex']).sum().reset_index()
         for sex in data.sex.unique():
             if sex == 1:
                 label='males'
@@ -73,6 +74,7 @@ def plot_name(name, data, handle_sex='SEPARATE'):
         plt.legend()
         
     elif handle_sex in ['MALE','MALES','FEMALE','FEMALES']:
+        data=data.groupby(by=['year','sex']).sum().reset_index()
         if handle_sex in ['MALE','MALES']:
             sex=1
             label='males'
