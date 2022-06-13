@@ -107,7 +107,7 @@ with cols[0]:
 
 # MAP
 
-# @st.cache()
+@st.cache()
 def load_map_data():
     geojson_file = r"./Data/france_departments_corse_merged.json"
     with open(geojson_file) as f:
