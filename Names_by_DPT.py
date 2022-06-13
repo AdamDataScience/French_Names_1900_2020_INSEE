@@ -55,9 +55,9 @@ def get_name_data(name, df=name_data, include_X=False):
     new_index = pd.MultiIndex.from_product(name_df.index.levels, names=name_df.index.names)
     st.write(new_index)
     name_df = name_df.reindex(new_index, fill_value=0)
-#     st.write(name_df)
+    st.write(name_df.astype(str))
     name_df = name_df.reset_index()
-    st.write(name_df)
+    st.write(name_df.astype(str))
     return name_df
     
 def plot_name(name, data, handle_sex='SEPARATE'):
