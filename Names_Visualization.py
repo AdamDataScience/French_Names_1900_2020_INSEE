@@ -56,7 +56,7 @@ def plot_name(names, handle_sex='SEPARATE'):
                     c=c=cmap(i+1)
                 data_temp = data[data.sex==sex]
                 plt.plot('year','count',data=data_temp, label=label,c=c)
-                i+=2
+            i+=2
 
         elif handle_sex in ['MALE','MALES','FEMALE','FEMALES']:
             if handle_sex in ['MALE','MALES']:
