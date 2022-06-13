@@ -36,48 +36,54 @@ def get_name_data(name, df=name_data, include_X=False):
     name_df = name_df.sort_values(by='year')
     return name_df
     
-def plot_name(name, handle_sex='SEPARATE'):
-    data=get_name_data(name)
-    if handle_sex == 'SUM':
-        data=data.groupby(by=['year']).sum().reset_index()
-        plt.plot('year','count', data=data)
-        plt.title(name + ' (males + females)')
-        
-    elif handle_sex == 'SEPARATE':
-        for sex in data.sex.unique():
-            if sex == 1:
-                label='males'
-                c='deepskyblue'
-            elif sex == 2:
-                label='females'
-                c='pink'
+def plot_name(names, handle_sex='SEPARATE'):
+    cmap = plt.cm.get_cmap('hsv', len(names))
+    i=0
+    for name in names:
+        data=get_name_data(name)
+        if handle_sex == 'SUM':
+            data=data.groupby(by=['year']).sum().reset_index()
+            plt.plot('year','count', data=data, c=cmap(i))
+            i+=1
+
+        elif handle_sex == 'SEPARATE':
+            for sex in data.sex.unique():
+                if sex == 1:
+                    label=name + ' males'
+                    c=cmap(i)
+                elif sex == 2:
+                    label=name + ' females'
+                    c=c=cmap(i+1)
+                data_temp = data[data.sex==sex]
+                plt.plot('year','count',data=data_temp, label=label,c=c)
+                i+=2
+
+        elif handle_sex in ['MALE','MALES','FEMALE','FEMALES']:
+            if handle_sex in ['MALE','MALES']:
+                sex=1
+                label=name + ' males'
+                c=cmap(i)
+                title='males'
+            else:
+                sex=2
+                label=name + ' females'
+                c=cmap(i+1)
+                title='females'
             data_temp = data[data.sex==sex]
             plt.plot('year','count',data=data_temp, label=label,c=c)
-        plt.title(name + ' (males vs females)')
-        plt.legend()
-        
-    elif handle_sex in ['MALE','MALES','FEMALE','FEMALES']:
-        if handle_sex in ['MALE','MALES']:
-            sex=1
-            label='males'
-            c='deepskyblue'
-            title='males'
-        else:
-            sex=2
-            label='females'
-            c='pink'
-            title='females'
-        data_temp = data[data.sex==sex]
-        plt.plot('year','count',data=data_temp, label=label,c=c)
-        plt.title(f"{name} ({title})")
-        plt.legend()
+            i+=1
+            
+    if handle_sex=='SUM': plt.title('French names (males + females)')
+    elif handle_sex=='SEPARATE': plt.title(('French names (males vs females)')
+    else: plt.title(f"French names ({title})")
+    plt.legend()
         
     plt.xticks(np.floor(plt.xticks()[0])) # round xticks
     fig = plt.gcf()
     st.pyplot(fig)
     
 st.header('French names by year')
-name_selected = st.selectbox('Type a name :', unique_names, first_name_index)
+name_selected = st.multiselect('Type a name :', unique_names, first_name)
 st.experimental_set_query_params(name=name_selected.lower())
 plot_name(name_selected, 'SEPARATE')
 
