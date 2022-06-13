@@ -30,9 +30,11 @@ def load_data(default_name='CAMILLE', first_name=first_name, remove_rare=True, r
 #     with open(file) as f:
     df = pd.read_csv(zf.open(file),delimiter=';')
 #     df = pd.read_csv(file,delimiter=';')
-    df.columns = ['sex','name','year','count']
+    f.columns = ['sex','name','year','dpt','count']
     if remove_rare: df = df[df.name != '_PRENOMS_RARES']
-    if remove_X: df = df[df.year != "XXXX"]
+    if remove_X:
+        df = df[df.year != "XXXX"]
+        df = df[df.code != "XX"]
     unique_names = df.name.unique()
     if first_name not in unique_names: first_name = default_name
     first_name_index = int(np.where(unique_names == first_name)[0][0])
