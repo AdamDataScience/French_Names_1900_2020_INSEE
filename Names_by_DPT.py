@@ -119,8 +119,6 @@ def load_map_data():
     with open(geojson_file) as f:
         geojson = json.load(f)
     return geojson
-        
-geojson = load_map_data()
 
 map_name_data = data.groupby(['dpt']).sum().drop(columns=['sex','year']).reset_index()
 
@@ -130,6 +128,12 @@ new_index = new_index.str.zfill(2)
 map_name_data = map_name_data.set_index(['dpt']).reindex(new_index,fill_value=0).reset_index()
 with cols[1]:
     st.write(map_name_data)
+    
+geojson = load_map_data()
+# add count to geojson data:
+st.write(len(geojson['features']))
+for idx in range(len(geojson['features'])): # 95
+    geojson['features'][idx]['properties']['count'] = int(map_name_data['count'][idx])
 
 
 # SOURCE
