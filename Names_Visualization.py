@@ -41,8 +41,7 @@ def get_name_data(name, df=name_data, include_X=False):
     return name_df
     
 def plot_name(names, handle_sex='SEPARATE'):
-    if handle_sex=='SEPARATE': n_colors = 2*len(names) +1
-    else: n_colors = len(names) +1
+    n_colors = (2*len(names) +1) if handle_sex=='SEPARATE' else (len(names) +1)
     cmap = plt.cm.get_cmap('hsv', n_colors)
     # for i in range(n_colors): st.write(cmap(i))
     i=0
@@ -96,7 +95,8 @@ st.header('French names by year')
 separate = st.checkbox('Separate by sex', True)
 names_selected = st.multiselect('Type a name :', unique_names, valid_names)
 st.experimental_set_query_params(name=names_selected)
-plot_name(names_selected, 'SEPARATE')
+handle_sex = 'SEPARATE' if separate else 'SUM'
+plot_name(names_selected, handle_sex)
 
 st.markdown('INSEE 2021, _Fichier des prénoms_  \n\
             <https://www.insee.fr/fr/statistiques/2540004#documentation>')
