@@ -25,7 +25,7 @@ first_name = first_name.upper()
 def load_data(default_name='CAMILLE', first_name=first_name, remove_rare=True, remove_X=True):
 #     file = r"./Data/french_names_1900-2020.csv"
     file = r"dpt2020.csv"
-    file_zip = r"r"./Data/dpt2020_csv.zip"
+    file_zip = r"./Data/dpt2020_csv.zip"
     zf = zipfile.ZipFile(file_zip)
 #     with open(file) as f:
     df = pd.read_csv(zf.open(file),delimiter=';')
