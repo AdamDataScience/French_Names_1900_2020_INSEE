@@ -2,11 +2,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
+import json
+from geopy.geocoders import Nominatim
+# import geopandas as gpd
+import folium
 
 import matplotlib as mpl
 mpl.rcParams['figure.figsize'] = [6.4, 4]
 
 query_params = st.experimental_get_query_params()
+
+# PLOT
 
 first_name = 'CAMILLE'
 if 'name' in query_params :
@@ -36,8 +42,8 @@ def get_name_data(name, df=name_data, include_X=False):
     name_df = name_df.sort_values(by='year')
     return name_df
     
-def plot_name(name, handle_sex='SEPARATE'):
-    data=get_name_data(name)
+def plot_name(name, data, handle_sex='SEPARATE'):
+#     data=get_name_data(name)
     if handle_sex == 'SUM':
         data=data.groupby(by=['year']).sum().reset_index()
         c='tab:blue'
@@ -82,10 +88,25 @@ separate = st.checkbox('Separate by gender', True)
 name_selected = st.selectbox('Type a name :', unique_names, first_name_index)
 st.experimental_set_query_params(name=name_selected.lower())
 handle_sex = 'SEPARATE' if separate else 'SUM'
-plot_name(name_selected, handle_sex)
+data=get_name_data(name_selected)
+plot_name(name_selected, data, handle_sex)
+
+# MAP
+# UPDATE REQUIREMENTS.TXT !!!!!!!!!!!!!!!!!!!!!!!
+
+geojson_file = r"./Data/france_departments_corse_merged.geojson"
+with open(geojson_file) as f:
+    geojson = json.load(f)
+    
+map_name_data = name_data.groupby(['dpt']).sum().drop(columns=['sex','year']).reset_index()
+
+
+# SOURCE
 
 st.markdown('INSEE 2021, _Fichier des prénoms_  \n\
             <https://www.insee.fr/fr/statistiques/2540004#documentation>')
+
+# GENERATION
 
 st.markdown('#')
 st.header('Name Generation (coming soon)')
