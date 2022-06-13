@@ -84,7 +84,7 @@ def plot_name(names, handle_sex='SEPARATE'):
     
 st.header('French names by year')
 name_selected = st.multiselect('Type a name :', unique_names, first_name)
-st.experimental_set_query_params(name=name_selected.lower())
+st.experimental_set_query_params(name=name_selected)
 plot_name(name_selected, 'SEPARATE')
 
 st.markdown('INSEE 2021, _Fichier des prénoms_  \n\
