@@ -53,7 +53,8 @@ def get_name_data(name, df=name_data, include_X=False):
     # fill missing years with 0:
     new_index = pd.Index(np.arange(1900,2021,1), name='year',dtype=int)
     st.write(new_index)
-    name_df = name_df.set_index(['year']).reindex(new_index,fill_value=0).reset_index()
+    st.write(name_df)
+    name_df = name_df.reset_index().set_index(['year']).reindex(new_index,fill_value=0).reset_index()
     st.write(name_df)
     return name_df
     
