@@ -86,3 +86,5 @@ plot_name(name_selected, handle_sex)
 
 st.markdown('INSEE 2021, _Fichier des prénoms_  \n\
             <https://www.insee.fr/fr/statistiques/2540004#documentation>')
+st.subheader('Name Generation (coming soon)')
+st.button('Generate', disabled=False)
