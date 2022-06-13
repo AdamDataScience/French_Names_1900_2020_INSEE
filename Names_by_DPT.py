@@ -45,7 +45,7 @@ name_data, unique_names, first_name_index = load_data()
 
 def get_name_data(name, df=name_data, include_X=False):
     name_df = df[df.name == name]
-    if not include_X:
+#     if not include_X:
 #         name_df = name_df[name_df.year != 'XXXX']
 #         name_df = name_df.astype({'year':'int32'})
 #     name_df = name_df.sort_values(by='year')
