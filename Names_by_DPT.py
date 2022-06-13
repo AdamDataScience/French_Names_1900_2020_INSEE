@@ -34,7 +34,7 @@ def load_data(default_name='CAMILLE', first_name=first_name, remove_rare=True, r
     if remove_rare: df = df[df.name != '_PRENOMS_RARES']
     if remove_X:
         df = df[df.year != "XXXX"]
-        df = df[df.code != "XX"]
+        df = df[df.dpt != "XX"]
     unique_names = df.name.unique()
     if first_name not in unique_names: first_name = default_name
     first_name_index = int(np.where(unique_names == first_name)[0][0])
