@@ -105,7 +105,7 @@ geojson_file = r"./Data/france_departments_corse_merged.geojson"
 with open(geojson_file) as f:
     geojson = json.load(f)
     
-map_name_data = name_data.groupby(['dpt']).sum().drop(columns=['sex','year']).reset_index()
+map_name_data = data.groupby(['dpt']).sum().drop(columns=['sex','year']).reset_index()
 
 
 # SOURCE
