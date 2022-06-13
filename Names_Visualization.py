@@ -94,4 +94,4 @@ with cols[0]:
 with cols[1]:
     st.selectbox('Period :', [x for x in range(1900,2010,10)],-1)
 with cols[2]:
-st.button('Generate Names', disabled=True)
+    st.button('Generate Names', disabled=True)
