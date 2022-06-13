@@ -81,7 +81,7 @@ separate = st.checkbox('Separate by sex', True)
 name_selected = st.selectbox('Type a name :', unique_names, first_name_index)
 st.experimental_set_query_params(name=name_selected.lower())
 handle_sex = 'SEPARATE' if separate else 'SUM'
-plot_name(names_selected, handle_sex)
+plot_name(name_selected, handle_sex)
 
 st.markdown('INSEE 2021, _Fichier des prénoms_  \n\
             <https://www.insee.fr/fr/statistiques/2540004#documentation>')
