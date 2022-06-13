@@ -35,6 +35,7 @@ def load_data(default_name='CAMILLE', first_name=first_name, remove_rare=True, r
     if remove_X:
         df = df[df.year != "XXXX"]
         df = df[df.dpt != "XX"]
+        name_df = name_df.astype({'year':'int32'}).sort_values(by='year')
     unique_names = df.name.unique()
     if first_name not in unique_names: first_name = default_name
     first_name_index = int(np.where(unique_names == first_name)[0][0])
@@ -45,9 +46,9 @@ name_data, unique_names, first_name_index = load_data()
 def get_name_data(name, df=name_data, include_X=False):
     name_df = df[df.name == name]
     if not include_X:
-        name_df = name_df[name_df.year != 'XXXX']
-        name_df = name_df.astype({'year':'int32'})
-    name_df = name_df.sort_values(by='year')
+#         name_df = name_df[name_df.year != 'XXXX']
+#         name_df = name_df.astype({'year':'int32'})
+#     name_df = name_df.sort_values(by='year')
     return name_df
     
 def plot_name(name, data, handle_sex='SEPARATE'):
