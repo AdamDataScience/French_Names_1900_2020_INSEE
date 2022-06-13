@@ -10,23 +10,27 @@ query_params = st.experimental_get_query_params()
 
 first_names = ['CAMILLE','DOMINIQUE']
 if 'name' in query_params :
-    if isinstance(query_params['name'], list): first_name = query_params['name'][0]
-    else: first_name = query_params['name']
-first_name = first_name.upper()
+    if isinstance(query_params['name'], list): first_names = query_params['name']
+    else: first_names = query_params['name']
+for i, name in enumerate(first_names):
+    first_names[i] = first_names[i].upper()
 
 @st.cache()
-def load_data(default_name='CAMILLE', first_name=first_name, remove_rare=True, remove_X=True):
+def load_data(default_names=['CAMILLE','DOMINIQUE'], first_name=first_name, remove_rare=True, remove_X=True):
     file = r"./Data/french_names_1900-2020.csv"
     df = pd.read_csv(file,delimiter=';')
     df.columns = ['sex','name','year','count']
     if remove_rare: df = df[df.name != '_PRENOMS_RARES']
     if remove_X: df = df[df.year != "XXXX"]
     unique_names = df.name.unique()
-    if first_name not in unique_names: first_name = default_name
-    first_name_index = int(np.where(unique_names == first_name)[0][0])
-    return df, unique_names, first_name_index
+    valid_names = []
+    for name in first_names:
+        if name in unique_names: valid_names.append(name)
+    if not valid_names: # if list empty
+        valid_names = default_names
+    return df, unique_names, valid_names
 
-name_data, unique_names, first_name_index = load_data()
+name_data, unique_names, valid_names = load_data()
 
 def get_name_data(name, df=name_data, include_X=False):
     name_df = df[df.name == name]
