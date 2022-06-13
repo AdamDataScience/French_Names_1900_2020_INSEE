@@ -97,7 +97,7 @@ with cols[1]:
 with cols[2]:
     st.selectbox('Department :', ['...'],0)
 with cols[3]:
-    st.checkbox('Only show original names')
+    st.checkbox('Only show original names',True)
 #     st.markdown('#')
 #     st.markdown(' ')
     st.button('Generate Names', disabled=True)
