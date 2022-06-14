@@ -196,7 +196,7 @@ map_layer.add_to(map)
 folium.LayerControl(name='France Names').add_to(map)
 map_layer.geojson.add_child(folium.features.GeoJsonTooltip
                                 (fields=['name','nom','count'],
-                                aliases=['Name:','Department:','Count':],
+                                aliases=['Name:','Department:','Count:'],
                                 labels=True))
 
 # # add map title not working
@@ -213,8 +213,14 @@ with cols[1]:
 
 # SOURCE
 
-st.markdown('INSEE 2021, _Fichier des prénoms_  \n\
+cols = st.columns(2)
+with cols[0]:
+     st.markdown('INSEE 2021, _Fichier des prénoms_  \n\
             <https://www.insee.fr/fr/statistiques/2540004#documentation>')
+
+with cols[1]:
+     st.markdown('Note: French Overseas Departments (DOM-TOM / DROM-COM) omitted')
+
 
 # GENERATION
 
