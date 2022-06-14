@@ -146,7 +146,7 @@ geojson = load_map_data()
 # add count to geojson data:
 # with cols[1]: st.write(len(geojson['features']))
 for idx in range(len(geojson['features'])): # 95
-    geojson['features'][idx]['properties']['count'] = int(map_name_data['count'][idx])
+     geojson['features'][idx]['properties']['count'] = int(map_name_data['count'][idx])
      geojson['features'][idx]['properties']['name'] = name_selected
     
 
