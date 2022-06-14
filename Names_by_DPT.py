@@ -155,7 +155,8 @@ new_index = new_index.str.zfill(2)
 map_name_data = map_name_data.set_index(['dpt']).reindex(new_index,fill_value=0).reset_index()
 # merge with dpt population:
 map_name_data = pd.merge(map_name_data.astype({'dpt':int}), dpt_pop.astype({'dpt':int}), how='left', on='dpt')
-map_name_data['prop'] = (map_name_data['count'].astype(float) / map_name_data['pop'].astype(float)) *100).astype(int)
+# get percentage of pop
+map_name_data['prop'] = ((map_name_data['count'].astype(float) / map_name_data['pop'].astype(float)) *100).astype(int)
 # with cols[1]: st.write(map_name_data)
     
 geojson = load_map_data()
@@ -214,7 +215,7 @@ map_layer.add_to(map)
 folium.LayerControl(name='France Names').add_to(map)
 map_layer.geojson.add_child(folium.features.GeoJsonTooltip
                                 (fields=['name','nom','population','count','proportion'],
-                                aliases=['Name :','Department :','Population :','Count :','Proportion :'],
+                                aliases=['Name :','Department :','Population :','Count :','Proportion (\%) :'],
                                 labels=True))
 
 # # add map title not working
