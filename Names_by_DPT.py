@@ -155,6 +155,7 @@ new_index = new_index.str.zfill(2)
 map_name_data = map_name_data.set_index(['dpt']).reindex(new_index,fill_value=0).reset_index()
 # merge with dpt population:
 map_name_data = pd.merge(map_name_data.astype({'dpt':int}), dpt_pop.astype({'dpt':int}), how='left', on='dpt', suffixes=None)
+map_name_data['prop'] = map_name_data['count'].astype(float) / map_name_data.pop.astype(float)
 with cols[1]:
      st.write(map_name_data)
     
@@ -164,8 +165,8 @@ geojson = load_map_data()
 for idx in range(len(geojson['features'])): # 95
      geojson['features'][idx]['properties']['name'] = name_selected.title()
      geojson['features'][idx]['properties']['count'] = int(map_name_data['count'][idx])
-     geojson['features'][idx]['properties']['population'] = int(dpt_pop.Population[idx+1])
-     geojson['features'][idx]['properties']['proportion'] = float(map_name_data['count'][idx]) / float(dpt_pop.Population[idx+1]) if idx<900 else 0
+     geojson['features'][idx]['properties']['population'] = int(map_name_data.pop[idx])
+     geojson['features'][idx]['properties']['proportion'] = float(map_name_data.prop[idx])
     
 
 # # find arbitrary country/city's coordinates:
@@ -190,7 +191,7 @@ map = folium.Map(tiles=tiles, location=center, width='100%', height='100%', zoom
 threshold = np.linspace(map_name_data['count'].min(), map_name_data['count'].max(), 10).tolist()
 # st.write(threshold)
 
-map_layer = folium.Choropleth(geo_data=geojson, data=map_name_data, columns=['dpt','count'],
+map_layer = folium.Choropleth(geo_data=geojson, data=map_name_data, columns=['dpt','prop'],
                               key_on='feature.properties.code',
                               threshold_scale=threshold,
                               fill_color='YlOrRd', fill_opacity=0.7, line_opacity=1,
@@ -213,8 +214,8 @@ map_layer.add_to(map)
 
 folium.LayerControl(name='France Names').add_to(map)
 map_layer.geojson.add_child(folium.features.GeoJsonTooltip
-                                (fields=['name','nom','count','population','proportion'],
-                                aliases=['Name:','Department:','Count:'],
+                                (fields=['name','nom','population','count','proportion'],
+                                aliases=['Name :','Department :','Population :','Count :','Proportion :'],
                                 labels=True))
 
 # # add map title not working
