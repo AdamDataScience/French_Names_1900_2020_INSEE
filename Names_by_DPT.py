@@ -219,7 +219,7 @@ with cols[0]:
             <https://www.insee.fr/fr/statistiques/2540004#documentation>')
 
 with cols[1]:
-     st.markdown('Note: French Overseas Departments (DOM-TOM / DROM-COM) omitted')
+     st.markdown('Note : French Overseas Departments (DOM-TOM / DROM-COM) omitted')
 
 
 # GENERATION
@@ -243,5 +243,6 @@ with cols[3]:
 # CREDITS
 
 st.markdown('#')
-st.markdown('Author: Adam M.  \n\
+st.markdown('Author :  \n\
+               Adam M.  \n\
                https://adam-data-science.wixsite.com/portfolio')
