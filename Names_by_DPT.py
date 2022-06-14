@@ -14,7 +14,7 @@ dpi = 81 # average dpi
 ratio = 1.2
 width = 550
 height = width/ratio
-map_offset_height = 25
+map_offset_height = 20
 # map_offset_width = map_offset_height*ratio
 mpl.rcParams['figure.figsize'] = [width/dpi,height/dpi]
 
