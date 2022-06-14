@@ -120,11 +120,11 @@ def plot_name(name, data, handle_sex='SEPARATE'):
     st.pyplot(fig)
     
 st.header('French Names by Year & Department')
-cols = st.columns(2)
 separate = st.checkbox('Separate by gender', True)
 name_selected = st.selectbox('Type a name :', unique_names, first_name_index)
 handle_sex = 'SEPARATE' if separate else 'SUM'
 
+cols = st.columns(2)
 with cols[0]:
     data=get_name_data(name_selected)
     plot_name(name_selected, data, handle_sex)
