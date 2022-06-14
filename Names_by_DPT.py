@@ -10,10 +10,12 @@ from streamlit_folium import folium_static
 import zipfile
 
 import matplotlib as mpl
-dpi = 10 # average dpi
+dpi = 81 # average dpi
 ratio = 1.2
 width = 550
 height = width/ratio
+map_offset_width = 50
+map_offset_height = map_offset_width/ratio
 mpl.rcParams['figure.figsize'] = [width/dpi,height/dpi]
 
 st.set_page_config(
@@ -214,7 +216,7 @@ map_layer.geojson.add_child(folium.features.GeoJsonTooltip
 with cols[1]:
 #      st.markdown(f"{name_selected.title()} in France Departments")
 #      st.markdown('')
-     folium_static(map, width=width, height=height)
+     folium_static(map, width=width-map_offset_width, height=height-map_offset_height)
 
 
 # SOURCE
