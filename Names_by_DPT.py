@@ -35,7 +35,7 @@ if 'name' in query_params :
 first_name = first_name.upper()
 
 @st.cache()
-def load_data(default_name='CAMILLE', first_name=first_name, remove_rare=True, remove_X=True):
+def load_data(default_name='CAMILLE', remove_rare=True, remove_X=True): # first_name=first_name
 #     file = r"./Data/french_names_1900-2020.csv"
     file = r"dpt2020.csv"
     file_zip = r"./Data/dpt2020_csv.zip"
@@ -51,11 +51,12 @@ def load_data(default_name='CAMILLE', first_name=first_name, remove_rare=True, r
         df = df.astype({'year':'int32'})
     unique_names = df.name.unique()
     df = df.sort_values(by='year')
-    if first_name not in unique_names: first_name = default_name
-    first_name_index = int(np.where(unique_names == first_name)[0][0])
-    return df, unique_names, first_name_index
+    return df, unique_names # first_name_index
 
-name_data, unique_names, first_name_index = load_data()
+name_data, unique_names = load_data() # first_name_index
+
+if first_name not in unique_names: first_name = default_name
+first_name_index = int(np.where(unique_names == first_name)[0][0])
 
 def get_name_data(name, df=name_data, include_X=False):
     name_df = df[df.name == name]
