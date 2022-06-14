@@ -40,7 +40,7 @@ if 'name' in query_params :
     else: first_name = query_params['name']
 first_name = first_name.upper()
 
-# @st.cache()
+@st.cache()
 def load_data(default_name='CAMILLE', remove_rare=True, remove_X=True): # first_name=first_name
 #      file = r"./Data/french_names_1900-2020.csv"
      file = r"dpt2020.csv"
@@ -156,8 +156,7 @@ map_name_data = map_name_data.set_index(['dpt']).reindex(new_index,fill_value=0)
 # merge with dpt population:
 map_name_data = pd.merge(map_name_data.astype({'dpt':int}), dpt_pop.astype({'dpt':int}), how='left', on='dpt')
 map_name_data['prop'] = map_name_data['count'].astype(float) / map_name_data['pop'].astype(float)
-with cols[1]:
-     st.write(map_name_data)
+# with cols[1]: st.write(map_name_data)
     
 geojson = load_map_data()
 # add count to geojson data:
@@ -188,7 +187,7 @@ tiles = ['OpenStreetMap', 'Stamen Terrain','Stamen Toner','CartoDB positron'][3]
 map = folium.Map(tiles=tiles, location=center, width='100%', height='100%', zoom_start=5, max_bounds=True, name='France Names')
 # with cols[1]: folium_static(map)
 
-threshold = np.linspace(map_name_data['count'].min(), map_name_data['count'].max(), 10).tolist()
+threshold = np.linspace(map_name_data['prop'].min(), map_name_data['prop'].max(), 10).tolist()
 # st.write(threshold)
 
 map_layer = folium.Choropleth(geo_data=geojson, data=map_name_data, columns=['dpt','prop'],
