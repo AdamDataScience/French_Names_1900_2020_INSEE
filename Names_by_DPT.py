@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
 import json
-from geopy.geocoders import Nominatim
+# from geopy.geocoders import Nominatim # only to obtain variable location coordinates
 # import geopandas as gpd...
 import folium
 import zipfile
@@ -126,14 +126,34 @@ map_name_data = data.groupby(['dpt']).sum().drop(columns=['sex','year']).reset_i
 new_index = pd.Index(np.arange(1,96,1), name='dpt',dtype=str).append(pd.Index([971,972,973,974], name='dpt',dtype=str))
 new_index = new_index.str.zfill(2)
 map_name_data = map_name_data.set_index(['dpt']).reindex(new_index,fill_value=0).reset_index()
-with cols[1]:
-    st.write(map_name_data)
+# with cols[1]: st.write(map_name_data)
     
 geojson = load_map_data()
 # add count to geojson data:
-st.write(len(geojson['features']))
+# with cols[1]: st.write(len(geojson['features']))
 for idx in range(len(geojson['features'])): # 95
     geojson['features'][idx]['properties']['count'] = int(map_name_data['count'][idx])
+    
+"""
+# find arbitrary country/city's coordinates:
+# from geopy.geocoders import Nominatim
+@st.cache()
+def get_center():
+   address = 'France'
+   geolocator = Nominatim(user_agent="id_explorer")
+   location = geolocator.geocode(address)
+   return location.latitude, location.longitude
+
+center = get_center()
+"""
+# instead, enter them manually for France:
+center = (46.603354, 1.8883335)
+
+tiles = ['OpenStreetMap', 'Stamen Terrain','Stamen Toner','CartoDB positron'][3]
+
+map = folium.Map(tiles=tiles, location=center, zoom_start=5, max_bounds=True, name='France Names')
+# display(map)
+folium_static(map)
 
 
 # SOURCE
