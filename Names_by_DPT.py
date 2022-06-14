@@ -154,10 +154,10 @@ new_index = pd.Index(np.arange(1,96,1), name='dpt',dtype=str).append(pd.Index([9
 new_index = new_index.str.zfill(2)
 map_name_data = map_name_data.set_index(['dpt']).reindex(new_index,fill_value=0).reset_index()
 # merge with dpt population:
-map_name_data = pd.merge(map_name_data.astype({'dpt':int}), dpt_pop.astype({'dpt':int}), how='right', on='dpt')
+map_name_data = pd.merge(map_name_data.astype({'dpt':int}), dpt_pop.astype({'dpt':int}), how='inner', on='dpt')
 # get percentage of pop
-map_name_data['prop'] = ((map_name_data['count'].astype(float) / map_name_data['pop'].astype(float)) *100) #.astype(int)
-with cols[1]: st.write(map_name_data)
+map_name_data['prop'] = ((map_name_data['count'].astype(float) / map_name_data['pop'].astype(float)) *100).astype(int)
+# with cols[1]: st.write(map_name_data)
     
 geojson = load_map_data()
 # add count to geojson data:
