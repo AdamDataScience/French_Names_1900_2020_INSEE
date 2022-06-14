@@ -197,6 +197,12 @@ map_layer.geojson.add_child(folium.features.GeoJsonTooltip
                                 aliases=['Department: ', 'Count'],
                                 labels=True))
 
+loc = 'Corpus Christi'
+title_html = '''
+             <h3 align="center" style="font-size:16px"><b>{}</b></h3>
+             '''.format(loc)
+map.get_root().html.add_child(folium.Element(title_html))
+
 with cols[1]:
     st.markdown(name_selected.title())
     folium_static(map)
