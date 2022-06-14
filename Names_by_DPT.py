@@ -25,6 +25,7 @@ st.set_page_config(
  )
 
 # scroll to top of page:
+import streamlit.components.v1 as components
 components.html(
     f"""
         <p>{st.session_state.counter}</p>
