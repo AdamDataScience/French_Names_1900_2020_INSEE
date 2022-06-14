@@ -28,7 +28,7 @@ st.set_page_config(
 import streamlit.components.v1 as components
 components.html(
     f"""
-        <p>{ }</p>
+        <p>{" "}</p>
         <script>
             window.parent.document.querySelector('section.main').scrollTo(0, 0);
         </script>
