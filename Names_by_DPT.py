@@ -153,11 +153,7 @@ map_name_data = data.groupby(['dpt']).sum().drop(columns=['sex','year']).reset_i
 new_index = pd.Index(np.arange(1,96,1), name='dpt',dtype=str).append(pd.Index([971,972,973,974], name='dpt',dtype=str))
 new_index = new_index.str.zfill(2)
 map_name_data = map_name_data.set_index(['dpt']).reindex(new_index,fill_value=0).reset_index()
-# dpt_pop['dpt'] = dpt_pop['dpt'].str.zfill(2)
-with cols[1]:
-     st.write(map_name_data)
-     st.write(dpt_pop)
-pd.merge(map_name_data.astype(str), dpt_pop.astype(str), how='left', on='dpt', suffixes=None)
+map_name_data = pd.merge(map_name_data.astype(str), dpt_pop.astype(str), how='left', on='dpt', suffixes=None)
 with cols[1]:
      st.write(map_name_data)
     
