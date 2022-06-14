@@ -152,6 +152,8 @@ new_index = pd.Index(np.arange(1,96,1), name='dpt',dtype=str).append(pd.Index([9
 new_index = new_index.str.zfill(2)
 map_name_data = map_name_data.set_index(['dpt']).reindex(new_index,fill_value=0).reset_index()
 with cols[1]: st.write(map_name_data)
+dpt_pop['Code'] = dpt_pop['Code'].str.zfill(2)
+st.write(dpt_pop)
     
 geojson = load_map_data()
 # add count to geojson data:
