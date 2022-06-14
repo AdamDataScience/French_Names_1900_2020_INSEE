@@ -153,8 +153,39 @@ center = (46.603354, 1.8883335)
 tiles = ['OpenStreetMap', 'Stamen Terrain','Stamen Toner','CartoDB positron'][3]
 
 map = folium.Map(tiles=tiles, location=center, zoom_start=5, max_bounds=True, name='France Names')
-# display(map)
-folium_static(map)
+# with cols[1]: folium_static(map)
+
+threshold = np.linspace(map_name_data['count'].min(), map_name_data['count'].max(), 10).tolist()
+# st.write(threshold)
+
+map_layer = folium.Choropleth(geo_data=geojson, data=map_name_data, columns=['dpt','count'],
+                              key_on='feature.properties.code',
+                              threshold_scale=threshold,
+                              fill_color='YlOrRd', fill_opacity=0.7, line_opacity=1,
+                              legend_name=f""""{name}" name count by department""",
+                              highlight=True, reset=True, name='Count Overlay'
+                              )#.add_to(map)
+
+# remove layer from layer control button:
+# map_layer.control=False
+
+# remove legend:
+for key in map_layer._children:
+#     print(key)
+    if key.startswith('color_map'):
+#         pass
+        del(map_layer._children[key])
+# folium.LayerControl(name='France Names').add_to(map)
+map_layer.add_to(map)
+
+
+folium.LayerControl(name='France Names').add_to(map)
+map_layer.geojson.add_child(folium.features.GeoJsonTooltip
+                                (fields=['nom','count'],
+                                aliases=['Department: ', 'Count'],
+                                labels=True))
+
+with cols[1]: folium_static(map)
 
 
 # SOURCE
