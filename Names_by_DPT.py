@@ -134,18 +134,18 @@ geojson = load_map_data()
 for idx in range(len(geojson['features'])): # 95
     geojson['features'][idx]['properties']['count'] = int(map_name_data['count'][idx])
     
-"""
-# find arbitrary country/city's coordinates:
-# from geopy.geocoders import Nominatim
-@st.cache()
-def get_center():
-   address = 'France'
-   geolocator = Nominatim(user_agent="id_explorer")
-   location = geolocator.geocode(address)
-   return location.latitude, location.longitude
 
-center = get_center()
-"""
+# # find arbitrary country/city's coordinates:
+# # from geopy.geocoders import Nominatim
+# @st.cache()
+# def get_center():
+#    address = 'France'
+#    geolocator = Nominatim(user_agent="id_explorer")
+#    location = geolocator.geocode(address)
+#    return location.latitude, location.longitude
+
+# center = get_center()
+
 # instead, enter them manually for France:
 center = (46.603354, 1.8883335)
 
