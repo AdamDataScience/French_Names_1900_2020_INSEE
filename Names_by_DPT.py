@@ -157,7 +157,7 @@ map_name_data = map_name_data.set_index(['dpt']).reindex(new_index,fill_value=0)
 map_name_data = pd.merge(map_name_data.astype({'dpt':int}), dpt_pop.astype({'dpt':int}), how='inner', on='dpt')
 # get percentage of pop
 map_name_data['prop'] = ((map_name_data['count'].astype(float) / map_name_data['pop'].astype(float)) *100) # .astype(int)
-map_name_data.dpt = map_name_data.dpt.str.zfill(2)
+map_name_data.dpt = map_name_data.dpt.astype(str).str.zfill(2)
 with cols[1]: st.write(map_name_data)
     
 geojson = load_map_data()
