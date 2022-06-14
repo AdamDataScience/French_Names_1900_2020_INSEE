@@ -24,18 +24,6 @@ st.set_page_config(
      }
  )
 
-# scroll to top of page:
-import streamlit.components.v1 as components
-components.html(
-    f"""
-        <p>{" "}</p>
-        <script>
-            window.parent.document.querySelector('section.main').scrollTo(0, 0);
-        </script>
-    """,
-    height=0
-)
-
 query_params = st.experimental_get_query_params()
 
 # PLOT
