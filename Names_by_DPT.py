@@ -10,7 +10,11 @@ from streamlit_folium import folium_static
 import zipfile
 
 import matplotlib as mpl
-mpl.rcParams['figure.figsize'] = [6.4, 4]
+dpi = 96. # average dpi
+ratio = 1.2
+width = 550
+height = width/ratio
+mpl.rcParams['figure.figsize'] = [width/dpi,height/dpi]
 
 st.set_page_config(
      page_title="French Names by Year & Department",
@@ -209,7 +213,7 @@ map_layer.geojson.add_child(folium.features.GeoJsonTooltip
 with cols[1]:
 #      st.markdown(f"{name_selected.title()} in France Departments")
 #      st.markdown('')
-     folium_static(map, width=500, height=475)
+     folium_static(map, width=width, height=height)
 
 
 # SOURCE
