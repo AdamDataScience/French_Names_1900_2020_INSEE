@@ -189,7 +189,7 @@ map = folium.Map(tiles=tiles, location=center, width='100%', height='100%', zoom
 # with cols[1]: folium_static(map)
 
 threshold = np.linspace(map_name_data['prop'].min(), map_name_data['prop'].max(), 10, dtype=float).tolist()
-# st.write(threshold)
+st.write(threshold)
 
 map_layer = folium.Choropleth(geo_data=geojson, data=map_name_data, columns=['dpt','prop'],
                               key_on='feature.properties.code',
