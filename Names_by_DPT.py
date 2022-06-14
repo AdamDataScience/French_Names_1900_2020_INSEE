@@ -197,14 +197,15 @@ map_layer.geojson.add_child(folium.features.GeoJsonTooltip
                                 aliases=['Department: ', 'Count'],
                                 labels=True))
 
-loc = 'Corpus Christi'
-title_html = f'''
-             <h3 align="center" style="font-size:16px"><b>{name_selected} in France Departments</b></h3>
-             '''.format(loc)
-map.get_root().html.add_child(folium.Element(title_html))
+# # add map title not working
+# loc = 'Corpus Christi'
+# title_html = f'''
+#              <h3 align="center" style="font-size:16px"><b>{name_selected} in France Departments</b></h3>
+#              '''.format(loc)
+# map.get_root().html.add_child(folium.Element(title_html))
 
 with cols[1]:
-    st.markdown(name_selected.title())
+    st.markdown(f"{name_selected.title()} in France Departments")
     folium_static(map)
 
 
