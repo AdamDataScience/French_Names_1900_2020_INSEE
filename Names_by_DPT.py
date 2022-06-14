@@ -58,7 +58,7 @@ def load_data(default_name='CAMILLE', remove_rare=True, remove_X=True): # first_
      unique_names = df.name.unique()
      df = df.sort_values(by='year')
      dpt_pop_file = r"./Data/French_dpt_population.csv"
-     dpt_pop = pd.read_csv(dpt_pop_file,delimiter=',', index_col=None)
+     dpt_pop = pd.read_csv(dpt_pop_file,delimiter=',', index_col='Code')
      return df, unique_names, dpt_pop # first_name_index
 
 name_data, unique_names, dpt_pop = load_data() # first_name_index
@@ -158,6 +158,7 @@ geojson = load_map_data()
 # with cols[1]: st.write(len(geojson['features']))
 for idx in range(len(geojson['features'])): # 95
      geojson['features'][idx]['properties']['count'] = int(map_name_data['count'][idx])
+     geojson['features'][idx]['properties']['proportion'] = float(map_name_data['count'][idx]) / float(dpt_pop.Population[idx])
      geojson['features'][idx]['properties']['name'] = name_selected.title()
     
 
