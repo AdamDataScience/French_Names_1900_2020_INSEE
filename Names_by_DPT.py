@@ -166,7 +166,7 @@ center = (46.603354, 1.8883335)
 
 tiles = ['OpenStreetMap', 'Stamen Terrain','Stamen Toner','CartoDB positron'][3]
 
-map = folium.Map(tiles=tiles, location=center, zoom_start=5, max_bounds=True, name='France Names')
+map = folium.Map(tiles=tiles, location=center, width='50%', height='50%', zoom_start=5, max_bounds=True, name='France Names')
 # with cols[1]: folium_static(map)
 
 threshold = np.linspace(map_name_data['count'].min(), map_name_data['count'].max(), 10).tolist()
