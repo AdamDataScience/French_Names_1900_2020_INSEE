@@ -142,6 +142,7 @@ def load_map_data():
     return geojson
 
 map_name_data = data.groupby(['dpt']).sum().drop(columns=['sex','year']).reset_index()
+write(map_name_data)
 
 # fill absent dpts with 0
 new_index = pd.Index(np.arange(1,96,1), name='dpt',dtype=str).append(pd.Index([971,972,973,974], name='dpt',dtype=str))
