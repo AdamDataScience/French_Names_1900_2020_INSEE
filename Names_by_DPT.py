@@ -42,24 +42,27 @@ first_name = first_name.upper()
 
 @st.cache()
 def load_data(default_name='CAMILLE', remove_rare=True, remove_X=True): # first_name=first_name
-#     file = r"./Data/french_names_1900-2020.csv"
-    file = r"dpt2020.csv"
-    file_zip = r"./Data/dpt2020_csv.zip"
-    zf = zipfile.ZipFile(file_zip)
-#     with open(file) as f:
-    df = pd.read_csv(zf.open(file),delimiter=';')
-#     df = pd.read_csv(file,delimiter=';')
-    df.columns = ['sex','name','year','dpt','count']
-    if remove_rare: df = df[df.name != '_PRENOMS_RARES']
-    if remove_X:
+#      file = r"./Data/french_names_1900-2020.csv"
+     file = r"dpt2020.csv"
+     file_zip = r"./Data/dpt2020_csv.zip"
+     zf = zipfile.ZipFile(file_zip)
+     #     with open(file) as f:
+     df = pd.read_csv(zf.open(file),delimiter=';')
+     #     df = pd.read_csv(file,delimiter=';')
+     df.columns = ['sex','name','year','dpt','count']
+     if remove_rare: df = df[df.name != '_PRENOMS_RARES']
+     if remove_X:
         df = df[df.year != "XXXX"]
         df = df[df.dpt != "XX"]
         df = df.astype({'year':'int32'})
-    unique_names = df.name.unique()
-    df = df.sort_values(by='year')
-    return df, unique_names # first_name_index
+     unique_names = df.name.unique()
+     df = df.sort_values(by='year')
+     dpt_pop_file = r"./Data/French_dpt_population.csv"
+     dpt_pop = pd.read_csv(dpt_pop_file,delimiter=',', index_col=None)
+     return df, unique_names, dpt_pop # first_name_index
 
-name_data, unique_names = load_data() # first_name_index
+name_data, unique_names, dpt_pop = load_data() # first_name_index
+st.write(dpt_pop)
 
 if first_name not in unique_names: first_name = default_name
 first_name_index = int(np.where(unique_names == first_name)[0][0])
