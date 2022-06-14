@@ -157,7 +157,7 @@ map_name_data = map_name_data.set_index(['dpt']).reindex(new_index,fill_value=0)
 with cols[1]:
      st.write(map_name_data)
      st.write(dpt_pop)
-map_name_data = map_name_data.merge(dpt_pop, how='left', on='dpt', suffixes=None)
+pd.merge(map_name_data.astype(str), dpt_pop.astype(str), how='left', on='dpt', suffixes=None)
 with cols[1]:
      st.write(map_name_data)
     
