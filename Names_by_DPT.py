@@ -162,7 +162,7 @@ map_layer = folium.Choropleth(geo_data=geojson, data=map_name_data, columns=['dp
                               key_on='feature.properties.code',
                               threshold_scale=threshold,
                               fill_color='YlOrRd', fill_opacity=0.7, line_opacity=1,
-                              legend_name=f""""{name}" name count by department""",
+                              legend_name=f""""{name_selected}" name count by department""",
                               highlight=True, reset=True, name='Count Overlay'
                               )#.add_to(map)
 
