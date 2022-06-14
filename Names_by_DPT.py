@@ -215,8 +215,8 @@ map_layer.add_to(map)
 
 folium.LayerControl(name='France Names').add_to(map)
 map_layer.geojson.add_child(folium.features.GeoJsonTooltip
-                                (fields=['name','nom','population','count','proportion'],
-                                aliases=['Name :','Department :','Population :','Count :','Proportion (%) :'],
+                                (fields=['name','count','nom','population','proportion'],
+                                aliases=['Name :','Count :','Department :','Population :','Proportion (%) :'],
                                 labels=True))
 
 # # add map title not working
