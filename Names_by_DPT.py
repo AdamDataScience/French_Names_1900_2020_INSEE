@@ -10,7 +10,7 @@ from streamlit_folium import folium_static
 import zipfile
 
 import matplotlib as mpl
-dpi = 96. # average dpi
+dpi = 108 # average dpi
 ratio = 1.2
 width = 550
 height = width/ratio
