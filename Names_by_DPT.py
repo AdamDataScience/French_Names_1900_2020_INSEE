@@ -147,6 +147,7 @@ geojson = load_map_data()
 # with cols[1]: st.write(len(geojson['features']))
 for idx in range(len(geojson['features'])): # 95
     geojson['features'][idx]['properties']['count'] = int(map_name_data['count'][idx])
+     geojson['features'][idx]['properties']['name'] = name_selected
     
 
 # # find arbitrary country/city's coordinates:
@@ -194,8 +195,8 @@ map_layer.add_to(map)
 
 folium.LayerControl(name='France Names').add_to(map)
 map_layer.geojson.add_child(folium.features.GeoJsonTooltip
-                                (fields=['nom','count'],
-                                aliases=['Department: ', 'Count'],
+                                (fields=['name','nom','count'],
+                                aliases=['Name:','Department:','Count':],
                                 labels=True))
 
 # # add map title not working
@@ -206,7 +207,7 @@ map_layer.geojson.add_child(folium.features.GeoJsonTooltip
 # map.get_root().html.add_child(folium.Element(title_html))
 
 with cols[1]:
-    st.markdown(f"{name_selected.title()} in France Departments")
+#     st.markdown(f"{name_selected.title()} in France Departments")
     folium_static(map)
 
 
