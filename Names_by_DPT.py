@@ -121,13 +121,14 @@ def plot_name(name, data, handle_sex='SEPARATE'):
     
 st.header('French Names by Year & Department')
 cols = st.columns(2)
+separate = st.checkbox('Separate by gender', True)
+name_selected = st.selectbox('Type a name :', unique_names, first_name_index)
+handle_sex = 'SEPARATE' if separate else 'SUM'
+
 with cols[0]:
-    separate = st.checkbox('Separate by gender', True)
-    name_selected = st.selectbox('Type a name :', unique_names, first_name_index)
-    st.experimental_set_query_params(name=name_selected.lower())
-    handle_sex = 'SEPARATE' if separate else 'SUM'
     data=get_name_data(name_selected)
     plot_name(name_selected, data, handle_sex)
+st.experimental_set_query_params(name=name_selected.lower())
 
 # MAP
 
