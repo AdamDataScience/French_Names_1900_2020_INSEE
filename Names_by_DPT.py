@@ -238,3 +238,9 @@ with cols[3]:
 #     st.markdown('#')
 #     st.markdown(' ')
     st.button('Generate Names', disabled=True)
+     
+     
+# CREDITS
+
+st.markdown('Author: Adam M.  \n\
+               https://adam-data-science.wixsite.com/portfolio')
