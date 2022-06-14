@@ -14,8 +14,8 @@ dpi = 81 # average dpi
 ratio = 1.2
 width = 550
 height = width/ratio
-map_offset_width = 50
-map_offset_height = map_offset_width/ratio
+map_offset_height = 25
+# map_offset_width = map_offset_height*ratio
 mpl.rcParams['figure.figsize'] = [width/dpi,height/dpi]
 
 st.set_page_config(
@@ -216,7 +216,7 @@ map_layer.geojson.add_child(folium.features.GeoJsonTooltip
 with cols[1]:
 #      st.markdown(f"{name_selected.title()} in France Departments")
 #      st.markdown('')
-     folium_static(map, width=width-map_offset_width, height=height-map_offset_height)
+     folium_static(map, width=width, height=height-map_offset_height)
 
 
 # SOURCE
