@@ -198,8 +198,8 @@ map_layer.geojson.add_child(folium.features.GeoJsonTooltip
                                 labels=True))
 
 loc = 'Corpus Christi'
-title_html = '''
-             <h3 align="center" style="font-size:16px"><b>{}</b></h3>
+title_html = f'''
+             <h3 align="center" style="font-size:16px"><b>{name_selected} in France Departments</b></h3>
              '''.format(loc)
 map.get_root().html.add_child(folium.Element(title_html))
 
