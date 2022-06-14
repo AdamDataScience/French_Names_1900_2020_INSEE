@@ -12,6 +12,18 @@ import zipfile
 import matplotlib as mpl
 mpl.rcParams['figure.figsize'] = [6.4, 4]
 
+st.set_page_config(
+     page_title="French Names by Year & Department",
+#      page_icon="🧊",
+     layout="wide",
+#      initial_sidebar_state="expanded",
+     menu_items={
+         'Get Help': 'https://www.extremelycoolapp.com/help',
+         'Report a bug': "https://www.extremelycoolapp.com/bug",
+         'About': "# This is a header. This is an *extremely* cool app!"
+     }
+ )
+
 query_params = st.experimental_get_query_params()
 
 # PLOT
