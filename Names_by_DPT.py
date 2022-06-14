@@ -58,7 +58,9 @@ def load_data(default_name='CAMILLE', remove_rare=True, remove_X=True): # first_
      unique_names = df.name.unique()
      df = df.sort_values(by='year')
      dpt_pop_file = r"./Data/French_dpt_population.csv"
-     dpt_pop = pd.read_csv(dpt_pop_file,delimiter=',', index_col='Code')
+     dpt_pop = pd.read_csv(dpt_pop_file,delimiter=',', index_col=None)
+     dpt_pop.columns = ['nom_dpt','dpt','pop']
+     dpt_pop = dpt_pop.drop(columns=['nom_dpt'])
      return df, unique_names, dpt_pop # first_name_index
 
 name_data, unique_names, dpt_pop = load_data() # first_name_index
@@ -151,9 +153,13 @@ map_name_data = data.groupby(['dpt']).sum().drop(columns=['sex','year']).reset_i
 new_index = pd.Index(np.arange(1,96,1), name='dpt',dtype=str).append(pd.Index([971,972,973,974], name='dpt',dtype=str))
 new_index = new_index.str.zfill(2)
 map_name_data = map_name_data.set_index(['dpt']).reindex(new_index,fill_value=0).reset_index()
-with cols[1]: st.write(map_name_data)
-dpt_pop['Code'] = dpt_pop['Code'].str.zfill(2)
-st.write(dpt_pop)
+dpt_pop['code'] = dpt_pop['code'].str.zfill(2)
+with cols[1]:
+     st.write(map_name_data)
+     st.write(dpt_pop)
+map_name_data = map_name_data.merge(dpt_pop, how='left', on='dpt', suffixes=None)
+with cols[1]:
+     st.write(map_name_data)
     
 geojson = load_map_data()
 # add count to geojson data:
