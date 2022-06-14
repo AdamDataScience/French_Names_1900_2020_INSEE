@@ -242,5 +242,6 @@ with cols[3]:
      
 # CREDITS
 
+st.markdown('#')
 st.markdown('Author: Adam M.  \n\
                https://adam-data-science.wixsite.com/portfolio')
