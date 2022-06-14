@@ -55,7 +55,7 @@ def get_name_data(name, df=name_data, include_X=False):
     new_index = pd.MultiIndex.from_product([range(1900,2021,1),name_df.dpt.unique(),name_df.sex.unique()], names=['year','dpt','sex'])
     name_df = name_df.set_index(['year','dpt','sex'])
     name_df = name_df.reindex(new_index, fill_value=0).reset_index()
-    st.write(name_df.astype(str))
+#     st.write(name_df.astype(str))
     return name_df
     
 def plot_name(name, data, handle_sex='SEPARATE'):
@@ -102,7 +102,7 @@ def plot_name(name, data, handle_sex='SEPARATE'):
     fig = plt.gcf()
     st.pyplot(fig)
     
-st.header('French Names by Year')
+st.header('French Names by Year & Department')
 cols = st.columns(2)
 with cols[0]:
     separate = st.checkbox('Separate by gender', True)
@@ -185,7 +185,9 @@ map_layer.geojson.add_child(folium.features.GeoJsonTooltip
                                 aliases=['Department: ', 'Count'],
                                 labels=True))
 
-with cols[1]: folium_static(map)
+with cols[1]:
+    st.markdown(name_selected.title())
+    folium_static(map)
 
 
 # SOURCE
