@@ -40,7 +40,7 @@ if 'name' in query_params :
     else: first_name = query_params['name']
 first_name = first_name.upper()
 
-@st.cache()
+# @st.cache()
 def load_data(default_name='CAMILLE', remove_rare=True, remove_X=True): # first_name=first_name
 #      file = r"./Data/french_names_1900-2020.csv"
      file = r"dpt2020.csv"
