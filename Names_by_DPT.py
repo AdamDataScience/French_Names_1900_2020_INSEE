@@ -208,8 +208,8 @@ map_layer.geojson.add_child(folium.features.GeoJsonTooltip
 
 with cols[1]:
 #      st.markdown(f"{name_selected.title()} in France Departments")
-     st.markdown('')
-     folium_static(map, width=500, height=450)
+#      st.markdown('')
+     folium_static(map, width=500, height=475)
 
 
 # SOURCE
