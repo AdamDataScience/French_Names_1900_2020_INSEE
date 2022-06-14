@@ -158,7 +158,7 @@ map_name_data = pd.merge(map_name_data.astype({'dpt':int}), dpt_pop.astype({'dpt
 # get percentage of pop
 map_name_data['prop'] = ((map_name_data['count'].astype(float) / map_name_data['pop'].astype(float)) *100) # .astype(int)
 map_name_data.dpt = map_name_data.dpt.astype(str).str.zfill(2)
-with cols[1]: st.write(map_name_data)
+# with cols[1]: st.write(map_name_data)
     
 geojson = load_map_data()
 # add count to geojson data:
@@ -190,7 +190,7 @@ map = folium.Map(tiles=tiles, location=center, width='100%', height='100%', zoom
 # with cols[1]: folium_static(map)
 
 threshold = np.linspace(map_name_data['prop'].min(), map_name_data['prop'].max(), 10, dtype=float).tolist()
-st.write(threshold)
+# st.write(threshold)
 
 map_layer = folium.Choropleth(geo_data=geojson, data=map_name_data, columns=['dpt','prop'],
                               key_on='feature.properties.code',
