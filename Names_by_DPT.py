@@ -247,23 +247,24 @@ with cols[1]:
 
 st.markdown('#')
 st.header('Name Search (coming soon)')
-cols = st.columns(4)
-with cols[0]:
-    search_gender = st.selectbox('Gender :', ['Both','Male','Female'],0, key='search_gender')
-with cols[1]:
-    search_period = st.selectbox('Period :', [str(x)+'s' for x in range(1900,2011,10)],11, key='search_period')
-with cols[2]:
-    search_dpt = st.selectbox('Department :', ['...'],0, key='search_dpt')
-with cols[3]:
-#     st.checkbox('Only show original names',True)
-#     st.markdown('#')
-#     st.markdown(' ')
-     with st.form('search_form'):
-          search_number = st.number_input('Number of names to display :', 1,100,10, key='search_number')
+
+with st.form('search_form'):
+     cols = st.columns(4)
+     with cols[0]:
+          search_gender = st.selectbox('Gender :', ['Both','Male','Female'],0, key='search_gender')
+     with cols[1]:
+          search_period = st.selectbox('Period :', [str(x)+'s' for x in range(1900,2011,10)],11, key='search_period')
+     with cols[2]:
+          search_dpt = st.selectbox('Department :', ['...'],0, key='search_dpt')
+     with cols[3]:
+#          st.checkbox('Only show original names',True)
+#          st.markdown('#')
+#          st.markdown(' ')
+          search_number = st.number_input('Number of names :', 1,100,10, key='search_number')
 #           search_button = st.button('Search Names', key='search_button', disabled=True)
           search_button = st.form_submit_button('Search Names') # ,key='search_button',disabled=False)
           if search_button:
-               st.write(name_data)
+               st.write(name_data.head(search_number)
 
 
 # GENERATION
