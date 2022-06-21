@@ -256,7 +256,7 @@ with cols[2]:
     search_dpt = st.selectbox('Department :', ['...'],0, key='search_dpt')
 with cols[3]:
 #     st.checkbox('Only show original names',True)
-#     st.markdown('#')
+    st.markdown('#')
 #     st.markdown(' ')
     search_button = st.button('Search Names', key='search_button', disabled=True)
 
