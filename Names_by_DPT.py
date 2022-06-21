@@ -296,7 +296,7 @@ gob = GridOptionsBuilder.from_dataframe(name_data)
 gob.configure_selection('single')
 grid_options = gob.build()
 grid = AgGrid(name_data.head(search_number), grid_options)
-grid_selected_row = grid['selected_rows']
+grid_selected_row = int(grid['selected_rows'][0])
 st.write(grid_selected_row)
 st.write(name_data.iloc[grid_selected_row,:])
 
