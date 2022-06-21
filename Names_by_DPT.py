@@ -280,8 +280,8 @@ with st.form('gen_form'):
      with cols[2]:
          st.selectbox('Department :', ['...'],0)
      with cols[3]:
-          st.checkbox('Only show original names',True)
           gen_number = st.number_input('Number of names :', 1,100,5,1, key='gen_number')
+          st.checkbox('Only show original names',True)
      #     st.markdown('#')
      #     st.markdown(' ')
 #          st.button('Generate Names', disabled=True)
