@@ -289,16 +289,16 @@ with st.form('gen_form'):
 #          st.button('Generate Names', disabled=True)
           gen_button = st.form_submit_button('Generate Names') # ,key='gen_button',disabled=False)
 if gen_button:
-#      pass
+     pass
 #      st.write(name_data.head(gen_number))
 
-     gob = GridOptionsBuilder.from_dataframe(name_data)
-     gob.configure_selection('single')
-     grid_options = gob.build()
-     grid = AgGrid(name_data.head(search_number), grid_options)
-     grid_selected_row = grid['selected_rows']
-     st.write(grid_selected_row)
-     st.write(name_data.iloc[grid_selected_row,:])
+gob = GridOptionsBuilder.from_dataframe(name_data)
+gob.configure_selection('single')
+grid_options = gob.build()
+grid = AgGrid(name_data.head(search_number), grid_options)
+grid_selected_row = grid['selected_rows']
+st.write(grid_selected_row)
+st.write(name_data.iloc[grid_selected_row,:])
 
      
      
