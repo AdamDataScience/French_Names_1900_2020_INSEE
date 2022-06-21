@@ -258,7 +258,7 @@ with cols[3]:
 #     st.checkbox('Only show original names',True)
 #     st.markdown('#')
 #     st.markdown(' ')
-     search_number = st.number_input['Number of names to display :', 1,100,10, key='search_number')
+     search_number = st.number_input('Number of names to display :', 1,100,10, key='search_number')
      search_button = st.button('Search Names', key='search_button', disabled=True)
 
 
