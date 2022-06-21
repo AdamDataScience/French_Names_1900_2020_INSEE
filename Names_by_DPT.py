@@ -292,6 +292,9 @@ if gen_button:
 #      pass
 #      st.write(name_data.head(gen_number))
      grid = AgGrid(name_data.head(search_number), editable=False)
+     grid_selected_row = grid['selected_rows']
+     st.write(grid_selected_row)
+     st.write(name_data.iloc([grid_selected_row,:]))
 
      
      
