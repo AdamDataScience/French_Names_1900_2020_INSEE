@@ -308,7 +308,7 @@ grid = AgGrid(name_data.head(search_number), grid_options=gob.build(), allow_uns
 # grid_selected_row = grid['selected_rows']
 # grid_selected_row = grid.get_selected_nodes()
 grid_selected_row = rowIndex
-# st.write(grid_selected_row)
+st.write(grid_selected_row)
 # st.write(name_data.iloc[grid_selected_row,:])
 st.write(grid)
 
