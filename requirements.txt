@@ -5,4 +5,4 @@ streamlit==1.10.0
 geopy==2.2.0
 folium==0.12.1.post1
 streamlit-folium==0.6.13
-st_aggrid
+streamlit-aggrid==0.2.3
