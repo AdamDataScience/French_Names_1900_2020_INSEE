@@ -7,7 +7,7 @@ import json
 # import geopandas as gpd...
 import folium
 from streamlit_folium import folium_static
-from st_aggrid import AgGrid
+from st_aggrid import AgGrid, GridOptionsBuilder
 import zipfile
 
 import matplotlib as mpl
@@ -265,8 +265,8 @@ with st.form('search_form'):
 #           search_button = st.button('Search Names', key='search_button', disabled=True)
           search_button = st.form_submit_button('Search Names') # ,key='search_button',disabled=False)
 if search_button:
-#      st.write(name_data.head(search_number))
-     grid = AgGrid(name_data.head(search_number), editable=True)
+     st.write(name_data.head(search_number))
+#      grid = AgGrid(name_data.head(search_number), editable=True)
 
 
 # GENERATION
@@ -291,7 +291,11 @@ with st.form('gen_form'):
 if gen_button:
 #      pass
 #      st.write(name_data.head(gen_number))
-     grid = AgGrid(name_data.head(search_number), editable=False)
+
+     gob = GridOptionsBuilder.from_dataframe(name_df)
+     gob.configure_selection('single')
+     grid_options = gob.build()
+     grid = AgGrid(name_data.head(search_number), grid_options)
      grid_selected_row = grid['selected_rows']
      st.write(grid_selected_row)
      st.write(name_data.iloc[grid_selected_row,:])
