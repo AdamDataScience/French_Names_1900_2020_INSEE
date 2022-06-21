@@ -292,14 +292,14 @@ if gen_button:
      pass
 #      st.write(name_data.head(gen_number))
 
-gob = GridOptionsBuilder.from_dataframe(name_data.head(search_number))
-gob.configure_column('name', editable=True)
+gob = GridOptionsBuilder.from_dataframe(name_data.head(search_number),fit_columns_on_grid_load=True)
+# gob.configure_column('name', editable=True)
 gob.configure_selection('single')
 grid_options = gob.build()
 grid = AgGrid(name_data.head(search_number), grid_options)
 grid_selected_row = grid['selected_rows']
 st.write(grid_selected_row)
-st.write(name_data.iloc[grid_selected_row,:])
+# st.write(name_data.iloc[grid_selected_row,:])
 st.write(grid)
 
      
