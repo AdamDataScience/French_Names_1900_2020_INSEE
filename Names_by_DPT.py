@@ -261,7 +261,7 @@ with st.form('search_form'):
 #          st.checkbox('Only show original names',True)
 #          st.markdown('#')
 #          st.markdown(' ')
-          search_number = st.number_input('Number of names :', 1,100,5,1, key='search_number')
+          search_number = int(st.number_input('Number of names :', 1,100,5,1, key='search_number'))
 #           search_button = st.button('Search Names', key='search_button', disabled=True)
           search_button = st.form_submit_button('Search Names') # ,key='search_button',disabled=False)
 if search_button:
