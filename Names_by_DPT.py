@@ -7,7 +7,7 @@ import json
 # import geopandas as gpd...
 import folium
 from streamlit_folium import folium_static
-from st_aggrid import AgGrid, GridOptionsBuilder
+from st_aggrid import AgGrid, GridOptionsBuilder, JsCode
 import zipfile
 
 import matplotlib as mpl
