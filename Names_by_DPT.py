@@ -263,8 +263,8 @@ with st.form('search_form'):
           search_number = st.number_input('Number of names :', 1,100,5,1, key='search_number')
 #           search_button = st.button('Search Names', key='search_button', disabled=True)
           search_button = st.form_submit_button('Search Names') # ,key='search_button',disabled=False)
-     if search_button:
-          st.write(name_data.head(search_number))
+if search_button:
+     st.write(name_data.head(search_number))
 
 
 # GENERATION
@@ -286,9 +286,9 @@ with st.form('gen_form'):
      #     st.markdown(' ')
 #          st.button('Generate Names', disabled=True)
           gen_button = st.form_submit_button('Generate Names') # ,key='gen_button',disabled=False)
-     if gen_button:
-#           pass
-          st.write(name_data.head(gen_number))
+if gen_button:
+#      pass
+     st.write(name_data.head(gen_number))
 
      
      
