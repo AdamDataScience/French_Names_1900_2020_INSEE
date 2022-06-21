@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 import json
 # from geopy.geocoders import Nominatim # only to obtain variable location coordinates
-# import geopandas as gpd
+# import geopandas as gpd...
 import folium
 from streamlit_folium import folium_static
 from st_aggrid import AgGrid
