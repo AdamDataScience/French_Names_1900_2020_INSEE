@@ -249,16 +249,16 @@ st.markdown('#')
 st.header('Name Search')
 cols = st.columns(4)
 with cols[0]:
-    search_gender = st.selectbox('Gender :', ['Both','Male','Female'],0)
+    search_gender = st.selectbox('Gender :', ['Both','Male','Female'],0, key='search_gender')
 with cols[1]:
-    search_period = st.selectbox('Period :', [str(x)+'s' for x in range(1900,2011,10)],11)
+    search_period = st.selectbox('Period :', [str(x)+'s' for x in range(1900,2011,10)],11, key='search_period')
 with cols[2]:
-    search_dpt = st.selectbox('Department :', ['...'],0)
+    search_dpt = st.selectbox('Department :', ['...'],0, key='search_dpt')
 with cols[3]:
 #     st.checkbox('Only show original names',True)
 #     st.markdown('#')
 #     st.markdown(' ')
-    search = st.button('Search Names', disabled=True)
+    search_button = st.button('Search Names', key='search_button', disabled=True)
 
 
 # GENERATION
