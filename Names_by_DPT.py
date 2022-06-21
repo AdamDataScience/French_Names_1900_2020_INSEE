@@ -292,7 +292,7 @@ if gen_button:
 #      pass
 #      st.write(name_data.head(gen_number))
 
-     gob = GridOptionsBuilder.from_dataframe(name_df)
+     gob = GridOptionsBuilder.from_dataframe(name_data)
      gob.configure_selection('single')
      grid_options = gob.build()
      grid = AgGrid(name_data.head(search_number), grid_options)
