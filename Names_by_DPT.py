@@ -287,6 +287,7 @@ with st.form('gen_form'):
 #          st.button('Generate Names', disabled=True)
           gen_button = st.form_submit_button('Generate Names') # ,key='gen_button',disabled=False)
      if gen_button:
+          pass
 #           st.write(name_data.head(search_number))
 
      
