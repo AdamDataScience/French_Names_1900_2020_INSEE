@@ -265,7 +265,8 @@ with st.form('search_form'):
 #           search_button = st.button('Search Names', key='search_button', disabled=True)
           search_button = st.form_submit_button('Search Names') # ,key='search_button',disabled=False)
 if search_button:
-     st.write(name_data.head(search_number))
+#      st.write(name_data.head(search_number))
+     grid = AgGrid(name_data.head(search_number), editable=True)
 
 
 # GENERATION
@@ -289,7 +290,8 @@ with st.form('gen_form'):
           gen_button = st.form_submit_button('Generate Names') # ,key='gen_button',disabled=False)
 if gen_button:
 #      pass
-     st.write(name_data.head(gen_number))
+#      st.write(name_data.head(gen_number))
+     grid = AgGrid(name_data.head(search_number), editable=False)
 
      
      
