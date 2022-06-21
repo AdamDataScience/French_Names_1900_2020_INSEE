@@ -271,18 +271,24 @@ with st.form('search_form'):
 
 st.markdown('#')
 st.header('Name Generation (coming soon)')
-cols = st.columns(4)
-with cols[0]:
-    st.selectbox('Gender :', ['Male','Female','Neither'],0)
-with cols[1]:
-    st.selectbox('Period :', [str(x)+'s' for x in range(1900,2011,10)],11)
-with cols[2]:
-    st.selectbox('Department :', ['...'],0)
-with cols[3]:
-    st.checkbox('Only show original names',True)
-#     st.markdown('#')
-#     st.markdown(' ')
-    st.button('Generate Names', disabled=True)
+with st.form('gen_form'):
+     cols = st.columns(4)
+     with cols[0]:
+         st.selectbox('Gender :', ['Male','Female','Neither'],0)
+     with cols[1]:
+         st.selectbox('Period :', [str(x)+'s' for x in range(1900,2011,10)],11)
+     with cols[2]:
+         st.selectbox('Department :', ['...'],0)
+     with cols[3]:
+          st.checkbox('Only show original names',True)
+          search_number = st.number_input('Number of names :', 1,100,10, key='gen_number')
+     #     st.markdown('#')
+     #     st.markdown(' ')
+#          st.button('Generate Names', disabled=True)
+          gen_button = st.form_submit_button('Generate Names') # ,key='gen_button',disabled=False)
+     if gen_button:
+#           st.write(name_data.head(search_number))
+
      
      
 # CREDITS
