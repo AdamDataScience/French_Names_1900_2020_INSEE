@@ -258,14 +258,12 @@ with cols[3]:
 #     st.checkbox('Only show original names',True)
 #     st.markdown('#')
 #     st.markdown(' ')
-     @cache_on_button_press('Search Names')
-     def search_names(search_number):
-#          return name_data
-          st.write(name_data)
-
-     search_number = st.number_input('Number of names to display :', 1,100,10, key='search_number')
-#      search_button = st.button('Search Names', key='search_button', disabled=True)
-     search_names(search_number)
+     with st.form('search_form'):
+          search_number = st.number_input('Number of names to display :', 1,100,10, key='search_number')
+#           search_button = st.button('Search Names', key='search_button', disabled=True)
+          search_button = st.form_submit_button('Search Names', key='search_button', disabled=True)
+          if search_button:
+               st.write(name_data)
 
 
 # GENERATION
