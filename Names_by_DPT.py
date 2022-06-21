@@ -246,7 +246,7 @@ with cols[1]:
 # QUERY
 
 st.markdown('#')
-st.header('Name Search')
+st.header('Name Search (coming soon)')
 cols = st.columns(4)
 with cols[0]:
     search_gender = st.selectbox('Gender :', ['Both','Male','Female'],0, key='search_gender')
@@ -256,9 +256,10 @@ with cols[2]:
     search_dpt = st.selectbox('Department :', ['...'],0, key='search_dpt')
 with cols[3]:
 #     st.checkbox('Only show original names',True)
-    st.markdown('#')
+#     st.markdown('#')
 #     st.markdown(' ')
-    search_button = st.button('Search Names', key='search_button', disabled=True)
+     search_number = st.number_input['Number of names to display :', 1,100,10, key='search_number')
+     search_button = st.button('Search Names', key='search_button', disabled=True)
 
 
 # GENERATION
