@@ -295,7 +295,7 @@ if gen_button:
 gob = GridOptionsBuilder.from_dataframe(name_data.head(search_number))
 # gob.configure_column('name', editable=True)
 gob.configure_selection('single')
-grid = AgGrid(name_data.head(search_number), grid_options=gob.build(), editable=True, theme='streamlit', fit_columns_on_grid_load=True,fit_rows_on_grid_load=True)
+grid = AgGrid(name_data.head(search_number), grid_options=gob.build(), grid_update_mode='SELECTION_CHANGED', editable=True, theme='streamlit', fit_columns_on_grid_load=True,fit_rows_on_grid_load=True)
 # grid_selected_row = grid['selected_rows']
 # grid_selected_row = grid.get_selected_nodes()
 # grid_selected_row = AgGrid.get_selected_rows()
