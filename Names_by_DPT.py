@@ -243,6 +243,24 @@ with cols[1]:
      st.markdown('Note : French Overseas Departments (DOM-TOM / DROM-COM) omitted')
 
 
+# QUERY
+
+st.markdown('#')
+st.header('Name Search')
+cols = st.columns(4)
+with cols[0]:
+    search_gender = st.selectbox('Gender :', ['Both','Male','Female'],0)
+with cols[1]:
+    search_period = st.selectbox('Period :', [str(x)+'s' for x in range(1900,2011,10)],11)
+with cols[2]:
+    search_dpt = st.selectbox('Department :', ['...'],0)
+with cols[3]:
+#     st.checkbox('Only show original names',True)
+#     st.markdown('#')
+#     st.markdown(' ')
+    search = st.button('Search Names', disabled=True)
+
+
 # GENERATION
 
 st.markdown('#')
