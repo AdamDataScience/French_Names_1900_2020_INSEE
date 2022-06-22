@@ -7,6 +7,7 @@ import json
 # import geopandas as gpd...
 import folium
 from streamlit_folium import folium_static
+# streamlit-aggrid==0.2.3
 # from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode, JsCode
 import zipfile
 
