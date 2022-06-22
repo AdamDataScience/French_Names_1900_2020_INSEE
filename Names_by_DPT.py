@@ -297,14 +297,15 @@ onClick = JsCode("""
 function(e) {
      let api = e.api;
      let rowIndex = e.rowIndex;
+     return {'rowIndex':rowIndex}
               }
 """)
 
 gob = GridOptionsBuilder.from_dataframe(name_data.head(search_number))
 # gob.configure_column('name', editable=True)
 gob.configure_selection('single')
-gob.configure_grid_options(onCellClicked=onClick)
-grid = AgGrid(name_data.head(search_number), grid_options=gob.build(), allow_unsafe_jscode=True, update_mode='selection_changed', editable=True, theme='streamlit', fit_columns_on_grid_load=True,fit_rows_on_grid_load=True)
+# gob.configure_grid_options(onCellClicked=onClick)
+grid = AgGrid(name_data.head(search_number), grid_options=gob.build(), allow_unsafe_jscode=True, update_mode='selection_changed', editable=True, theme='streamlit', fit_columns_on_grid_load=True)
 # grid_selected_row = grid['selected_rows']
 # grid_selected_row = grid.get_selected_nodes()
 grid_selected_row = rowIndex
