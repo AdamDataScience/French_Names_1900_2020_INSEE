@@ -304,7 +304,7 @@ function(e) {
 gob = GridOptionsBuilder.from_dataframe(name_data.head(search_number))
 # gob.configure_column('name', editable=True)
 gob.configure_selection('single')
-gob.configure_grid_options(onCellClicked=onClick)
+# gob.configure_grid_options(onCellClicked=onClick)
 grid = AgGrid(name_data.head(search_number), grid_options=gob.build(), allow_unsafe_jscode=True, \
 #               update_mode=GridUpdateMode.SELECTION_CHANGED, \
               editable=True, theme='streamlit', fit_columns_on_grid_load=True)
