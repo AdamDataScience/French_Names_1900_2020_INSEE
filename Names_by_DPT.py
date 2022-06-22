@@ -7,7 +7,7 @@ import json
 # import geopandas as gpd...
 import folium
 from streamlit_folium import folium_static
-from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode, JsCode
+# from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode, JsCode
 import zipfile
 
 import matplotlib as mpl
@@ -290,30 +290,30 @@ with st.form('gen_form'):
           gen_button = st.form_submit_button('Generate Names') # ,key='gen_button',disabled=False)
 if gen_button:
      pass
-#      st.write(name_data.head(gen_number))
+     st.write(name_data.head(gen_number))
 
-rowIndex = 0
-onClick = JsCode("""
-function(e) {
-     let api = e.api;
-     let rowIndex = e.rowIndex;
-     return {'rowIndex':rowIndex}
-              }
-""")
+# rowIndex = 0
+# onClick = JsCode("""
+# function(e) {
+#      let api = e.api;
+#      let rowIndex = e.rowIndex;
+#      return {'rowIndex':rowIndex}
+#               }
+# """)
 
-gob = GridOptionsBuilder.from_dataframe(name_data.head(search_number))
-# gob.configure_column('name', editable=True)
-gob.configure_selection('single')
-# gob.configure_grid_options(onCellClicked=onClick)
-grid = AgGrid(name_data.head(search_number), grid_options=gob.build(), allow_unsafe_jscode=True, \
-#               update_mode=GridUpdateMode.SELECTION_CHANGED, \
-              editable=True, theme='streamlit', fit_columns_on_grid_load=True)
-# grid_selected_row = grid['selected_rows']
-# grid_selected_row = grid.get_selected_nodes()
-grid_selected_row = rowIndex
-st.write(grid_selected_row)
-# st.write(name_data.iloc[grid_selected_row,:])
-st.write(grid)
+# gob = GridOptionsBuilder.from_dataframe(name_data.head(search_number))
+# # gob.configure_column('name', editable=True)
+# gob.configure_selection('single')
+# # gob.configure_grid_options(onCellClicked=onClick)
+# grid = AgGrid(name_data.head(search_number), grid_options=gob.build(), allow_unsafe_jscode=True, \
+# #               update_mode=GridUpdateMode.SELECTION_CHANGED, \
+#               editable=True, theme='streamlit', fit_columns_on_grid_load=True)
+# # grid_selected_row = grid['selected_rows']
+# # grid_selected_row = grid.get_selected_nodes()
+# grid_selected_row = rowIndex
+# st.write(grid_selected_row)
+# # st.write(name_data.iloc[grid_selected_row,:])
+# st.write(grid)
 
      
      
